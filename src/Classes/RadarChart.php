@@ -10,10 +10,10 @@ class RadarChart extends Chart
 
     protected function buildChartData()
     {
-        $i = 0;
+        $colorIndex = 0;
 
         foreach ($this->datasets as $label => $dataset) {
-            $borderColor = $this->chartColors->getValueByKey($i);
+            $borderColor = $this->chartColors->getValueByKey($colorIndex);
             $backgroundColor = $this->hex2rgba($borderColor);
 
             $this->data[] = [
@@ -25,7 +25,7 @@ class RadarChart extends Chart
                 'data'             => $dataset,
             ];
 
-            $i++;
+            $colorIndex++;
         }
     }
 

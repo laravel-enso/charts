@@ -10,8 +10,8 @@ class PieChart extends Chart
 
     protected function buildChartData()
     {
-        for ($i = 0; $i < count($this->labels); $i++) {
-            $this->backgroundColor[] = $this->chartColors->getValueByKey($i);
+        for ($colorIndex = 0; $colorIndex < count($this->labels); $colorIndex++) {
+            $this->backgroundColor[] = $this->chartColors->getValueByKey($colorIndex);
         }
     }
 

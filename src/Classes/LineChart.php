@@ -10,11 +10,11 @@ class LineChart extends Chart
 
     protected function buildChartData()
     {
-        $i = 0;
+        $colorIndex = 0;
         $this->data = [];
 
         foreach ($this->datasets as $label => $dataset) {
-            $color = $this->chartColors->getValueByKey($i);
+            $color = $this->chartColors->getValueByKey($colorIndex);
 
             $backgroundColor = $this->hex2rgba($color);
 
@@ -30,7 +30,7 @@ class LineChart extends Chart
                 'data'             => $dataset,
             ];
 
-            $i++;
+            $colorIndex++;
         }
     }
 

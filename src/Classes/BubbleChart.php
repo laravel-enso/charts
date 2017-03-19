@@ -12,14 +12,14 @@ class BubbleChart extends Chart
 
     protected function buildChartData()
     {
-        $i = 0;
+        $colorIndex = 0;
 
         $this->getBubbleChartDatasetMaxRadius();
         $this->resizeBubbleChartDatasetRadius();
         $this->mapDatasetsWithLabels();
 
         foreach ($this->datasets as $label => $dataset) {
-            $borderColor = $this->chartColors->getValueByKey($i);
+            $borderColor = $this->chartColors->getValueByKey($colorIndex);
             $backgroundColor = $this->hex2rgba($borderColor);
             $hoverBackgroundColor = $this->hex2rgba($borderColor, 0.6);
 
@@ -34,7 +34,7 @@ class BubbleChart extends Chart
                 'data'                 => $datasetArray,
             ];
 
-            $i++;
+            $colorIndex++;
         }
     }
 
@@ -48,7 +48,7 @@ class BubbleChart extends Chart
 
     private function resizeBubbleChartDatasetRadius()
     {
-        foreach ($this->datasets as $label => &$dataset) {
+        foreach ($this->datasets as &$dataset) {
             foreach ($dataset as &$bubble) {
                 $bubble[2] = round($this->maxRadius * $bubble[2] / $this->maxDatasetsRadius, 2);
             }
@@ -75,7 +75,7 @@ class BubbleChart extends Chart
     {
         $datasetArray = [];
 
-        foreach ($dataset as $index => $values) {
+        foreach ($dataset as $values) {
             $datasetArray[] = [
 
                 'x' => $values[0],

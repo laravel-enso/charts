@@ -8,10 +8,10 @@ class BarChart extends Chart
 {
     protected function buildChartData()
     {
-        $i = 0;
+        $colorIndex = 0;
 
         foreach ($this->datasets as $label => $dataset) {
-            $color = $this->chartColors->getValueByKey($i);
+            $color = $this->chartColors->getValueByKey($colorIndex);
 
             $this->data[] = [
 
@@ -20,7 +20,7 @@ class BarChart extends Chart
                 'data'            => $dataset,
             ];
 
-            $i++;
+            $colorIndex++;
         }
     }
 
