@@ -2,6 +2,8 @@
 
 namespace LaravelEnso\Charts\Classes;
 
+use LaravelEnso\Charts\Chart;
+
 class RadarChart extends Chart
 {
 

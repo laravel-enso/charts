@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Charts\AbstractClasses;
+namespace LaravelEnso\Charts;
 
 use LaravelEnso\Charts\Enums\ChartColorsEnum;
 
