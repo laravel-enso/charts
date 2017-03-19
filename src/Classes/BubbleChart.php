@@ -6,8 +6,7 @@ use LaravelEnso\Charts\Chart;
 
 class BubbleChart extends Chart
 {
-
-    public $fill      = false;
+    public $fill = false;
     public $maxRadius = 25;
     private $maxDatasetsRadius;
 
@@ -20,9 +19,8 @@ class BubbleChart extends Chart
         $this->mapDatasetsWithLabels();
 
         foreach ($this->datasets as $label => $dataset) {
-
-            $borderColor          = $this->chartColors->getValueByKey($i);
-            $backgroundColor      = $this->hex2rgba($borderColor);
+            $borderColor = $this->chartColors->getValueByKey($i);
+            $backgroundColor = $this->hex2rgba($borderColor);
             $hoverBackgroundColor = $this->hex2rgba($borderColor, 0.6);
 
             $datasetArray = $this->buildDatasetArray($dataset);
@@ -51,9 +49,7 @@ class BubbleChart extends Chart
     private function resizeBubbleChartDatasetRadius()
     {
         foreach ($this->datasets as $label => &$dataset) {
-
             foreach ($dataset as &$bubble) {
-
                 $bubble[2] = round($this->maxRadius * $bubble[2] / $this->maxDatasetsRadius, 2);
             }
         }
@@ -64,7 +60,6 @@ class BubbleChart extends Chart
         $maxArray = [];
 
         foreach ($this->datasets as $dataset) {
-
             $maxArray[] = max(array_column($dataset, 2));
         }
 
@@ -81,7 +76,6 @@ class BubbleChart extends Chart
         $datasetArray = [];
 
         foreach ($dataset as $index => $values) {
-
             $datasetArray[] = [
 
                 'x' => $values[0],

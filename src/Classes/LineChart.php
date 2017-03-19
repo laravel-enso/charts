@@ -6,16 +6,14 @@ use LaravelEnso\Charts\Chart;
 
 class LineChart extends Chart
 {
-
     public $fill = false;
 
     protected function buildChartData()
     {
-        $i          = 0;
+        $i = 0;
         $this->data = [];
 
         foreach ($this->datasets as $label => $dataset) {
-
             $color = $this->chartColors->getValueByKey($i);
 
             $backgroundColor = $this->hex2rgba($color);
