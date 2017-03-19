@@ -1,11 +1,13 @@
 # Charts
 Charts data builder for Chart.js
 
-## Don't forget to publish the vue components
+## Don't forget to
 
-php artisan vendor:publish --tag=chart-component
+Add LaravelEnso\Chart\ChartServiceProvider::class to config/app.php.
 
-after that include it in you app.js and gulp
+Publish the vue components with php artisan vendor:publish --tag=chart-component.
+
+After that include the component in your app.js and run gulp.
 
 ## Upgrade from laravel-enso v2
 
