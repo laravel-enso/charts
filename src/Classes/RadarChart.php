@@ -6,7 +6,6 @@ use LaravelEnso\Charts\Chart;
 
 class RadarChart extends Chart
 {
-
     public $fill = false;
 
     protected function buildChartData()
@@ -14,8 +13,7 @@ class RadarChart extends Chart
         $i = 0;
 
         foreach ($this->datasets as $label => $dataset) {
-
-            $borderColor     = $this->chartColors->getValueByKey($i);
+            $borderColor = $this->chartColors->getValueByKey($i);
             $backgroundColor = $this->hex2rgba($borderColor);
 
             $this->data[] = [
@@ -23,7 +21,7 @@ class RadarChart extends Chart
                 'label'            => $label,
                 'backgroundColor'  => $backgroundColor,
                 'borderColor'      => $borderColor,
-                'pointBorderColor' => "#fff",
+                'pointBorderColor' => '#fff',
                 'data'             => $dataset,
             ];
 

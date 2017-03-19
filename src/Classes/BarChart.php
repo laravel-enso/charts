@@ -6,13 +6,11 @@ use LaravelEnso\Charts\Chart;
 
 class BarChart extends Chart
 {
-
     protected function buildChartData()
     {
         $i = 0;
 
         foreach ($this->datasets as $label => $dataset) {
-
             $color = $this->chartColors->getValueByKey($i);
 
             $this->data[] = [
