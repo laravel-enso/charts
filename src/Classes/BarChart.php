@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\Charts\Classes;
 
-use LaravelEnso\Charts\Chart;
+use LaravelEnso\Charts\Abstracts\Chart;
 
 class BarChart extends Chart
 {
