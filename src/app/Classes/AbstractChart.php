@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\Charts\Abstracts;
+namespace LaravelEnso\Charts\App\Classes;
 
-use LaravelEnso\Charts\Enums\ChartColorsEnum;
+use LaravelEnso\Charts\App\Enums\ChartColorsEnum;
 
-abstract class Chart
+abstract class AbstractChart
 {
     protected $datasets;
     protected $labels;

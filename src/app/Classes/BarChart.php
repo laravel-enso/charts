@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\Charts\Classes;
+namespace LaravelEnso\Charts\App\Classes;
 
-use LaravelEnso\Charts\Abstracts\Chart;
+use LaravelEnso\Charts\App\Classes\AbstractChart;
 
-class BarChart extends Chart
+class BarChart extends AbstractChart
 {
     protected function buildChartData()
     {

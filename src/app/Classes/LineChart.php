@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\Charts\Classes;
+namespace LaravelEnso\Charts\App\Classes;
 
-use LaravelEnso\Charts\Abstracts\Chart;
+use LaravelEnso\Charts\App\Classes\AbstractChart;
 
-class LineChart extends Chart
+class LineChart extends AbstractChart
 {
     public $fill = false;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Charts\Enums;
+namespace LaravelEnso\Charts\App\Enums;
 
 use LaravelEnso\Helpers\Classes\AbstractEnum;
 

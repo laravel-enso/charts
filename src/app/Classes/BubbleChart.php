@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\Charts\Classes;
+namespace LaravelEnso\Charts\App\Classes;
 
-use LaravelEnso\Charts\Abstracts\Chart;
+use LaravelEnso\Charts\App\Classes\AbstractChart;
 
-class BubbleChart extends Chart
+class BubbleChart extends AbstractChart
 {
     public $fill = false;
     public $maxRadius = 25;
