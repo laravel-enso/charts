@@ -2,8 +2,6 @@
 
 namespace LaravelEnso\Charts\App\Classes;
 
-use LaravelEnso\Charts\App\Classes\AbstractChart;
-
 class BubbleChart extends AbstractChart
 {
     public $fill = false;
