@@ -2,8 +2,6 @@
 
 namespace LaravelEnso\Charts\App\Classes;
 
-use LaravelEnso\Charts\App\Classes\AbstractChart;
-
 class PieChart extends AbstractChart
 {
     private $backgroundColor = [];
