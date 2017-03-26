@@ -4,7 +4,7 @@ namespace LaravelEnso\Charts\App\Classes;
 
 class BubbleChart extends AbstractChart
 {
-    public $fill = false;
+    public $fill      = false;
     public $maxRadius = 25;
     private $maxDatasetsRadius;
 
@@ -17,19 +17,12 @@ class BubbleChart extends AbstractChart
         $this->mapDatasetsWithLabels();
 
         foreach ($this->datasets as $label => $dataset) {
-            $borderColor = $this->chartColors->getValueByKey($colorIndex);
-            $backgroundColor = $this->hex2rgba($borderColor);
-            $hoverBackgroundColor = $this->hex2rgba($borderColor, 0.6);
-
-            $datasetArray = $this->buildDatasetArray($dataset);
-
             $this->data[] = [
-
                 'label'                => $label,
-                'backgroundColor'      => $backgroundColor,
-                'borderColor'          => $borderColor,
-                'hoverBackgroundColor' => $hoverBackgroundColor,
-                'data'                 => $datasetArray,
+                'backgroundColor'      => $this->hex2rgba($borderColor),
+                'borderColor'          => $this->chartColors->getValueByKey($colorIndex),
+                'hoverBackgroundColor' => $this->hex2rgba($borderColor, 0.6),
+                'data'                 => $this->buildDatasetArray($dataset),
             ];
 
             $colorIndex++;
@@ -75,7 +68,6 @@ class BubbleChart extends AbstractChart
 
         foreach ($dataset as $values) {
             $datasetArray[] = [
-
                 'x' => $values[0],
                 'y' => $values[1],
                 'r' => $values[2],

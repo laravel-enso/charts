@@ -16,16 +16,13 @@ class PieChart extends AbstractChart
     public function getResponse()
     {
         return [
-
             'labels'   => $this->labels,
             'datasets' => [
                 [
-
                     'data'            => $this->datasets,
                     'backgroundColor' => $this->backgroundColor,
                 ],
             ],
-
         ];
     }
 }

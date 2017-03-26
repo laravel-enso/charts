@@ -9,12 +9,9 @@ class BarChart extends AbstractChart
         $colorIndex = 0;
 
         foreach ($this->datasets as $label => $dataset) {
-            $color = $this->chartColors->getValueByKey($colorIndex);
-
             $this->data[] = [
-
                 'label'           => $label,
-                'backgroundColor' => $color,
+                'backgroundColor' => $this->chartColors->getValueByKey($colorIndex),
                 'data'            => $dataset,
             ];
 
@@ -25,7 +22,6 @@ class BarChart extends AbstractChart
     public function getResponse()
     {
         return [
-
             'labels'   => $this->labels,
             'datasets' => $this->data,
         ];
