@@ -4,7 +4,7 @@ namespace LaravelEnso\Charts\App\Classes;
 
 class BubbleChart extends AbstractChart
 {
-    public $fill      = false;
+    public $fill = false;
     public $maxRadius = 25;
     private $maxDatasetsRadius;
 
