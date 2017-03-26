@@ -11,14 +11,16 @@ class LineChart extends AbstractChart
         $colorIndex = 0;
 
         foreach ($this->datasets as $label => $dataset) {
+            $borderColor = $this->chartColors->getValueByKey($colorIndex);
+
             $this->data[] = [
                 'fill'             => $this->fill,
                 'lineTension'      => 0.1,
                 'pointHoverRadius' => 5,
                 'pointHitRadius'   => 10,
                 'label'            => $label,
-                'borderColor'      => $this->chartColors->getValueByKey($colorIndex),
-                'backgroundColor'  => $this->hex2rgba($color),
+                'borderColor'      => $borderColor,
+                'backgroundColor'  => $this->hex2rgba($borderColor),
                 'data'             => $dataset,
             ];
 

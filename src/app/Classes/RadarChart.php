@@ -11,10 +11,12 @@ class RadarChart extends AbstractChart
         $colorIndex = 0;
 
         foreach ($this->datasets as $label => $dataset) {
+            $borderColor = $this->chartColors->getValueByKey($colorIndex);
+
             $this->data[] = [
                 'label'            => $label,
+                'borderColor'      => $borderColor,
                 'backgroundColor'  => $this->hex2rgba($borderColor),
-                'borderColor'      => $this->chartColors->getValueByKey($colorIndex),
                 'pointBorderColor' => '#fff',
                 'data'             => $dataset,
             ];

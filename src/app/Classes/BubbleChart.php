@@ -17,10 +17,12 @@ class BubbleChart extends AbstractChart
         $this->mapDatasetsWithLabels();
 
         foreach ($this->datasets as $label => $dataset) {
+            $borderColor = $this->chartColors->getValueByKey($colorIndex);
+
             $this->data[] = [
                 'label'                => $label,
+                'borderColor'          => $borderColor,
                 'backgroundColor'      => $this->hex2rgba($borderColor),
-                'borderColor'          => $this->chartColors->getValueByKey($colorIndex),
                 'hoverBackgroundColor' => $this->hex2rgba($borderColor, 0.6),
                 'data'                 => $this->buildDatasetArray($dataset),
             ];
