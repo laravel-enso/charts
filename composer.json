@@ -1,6 +1,6 @@
 {
     "name": "laravel-enso/charts",
-    "description": "Charts data builder for Chart.js",
+    "description": "Charts wrapper for Chart.js",
     "type": "library",
     "license": "MIT",
     "authors": [

@@ -4,7 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/laravel-enso/charts/downloads)](https://packagist.org/packages/laravel-enso/charts)
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/charts/version)](https://packagist.org/packages/laravel-enso/charts)
 
-Charts is server side data builder for [Chart.js](http://www.chartjs.org), with a vue component for the frontend. It works best with AdminLte.
+Charts is a server side data builder for [Chart.js](http://www.chartjs.org), with a vue component for the frontend. It works best with AdminLte.
 
 ### Installation
 
