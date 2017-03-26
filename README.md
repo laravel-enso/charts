@@ -54,6 +54,10 @@ Vue.component('chart',
 	headerClass - `primary`, `success`, `danger`, `info`, `warning`
 	draggable: Boolean. It works with vuedraggable. You will find an working example in LarvelEnso Core's Dashboard.
 
+### Note
+
+The laravel-enso/core package comes with this library included.
+
 ### Contributions
 
 are welcome
