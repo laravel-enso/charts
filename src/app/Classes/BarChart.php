@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Charts\App\Classes;
+namespace LaravelEnso\Charts\app\Classes;
 
 class BarChart extends AbstractChart
 {

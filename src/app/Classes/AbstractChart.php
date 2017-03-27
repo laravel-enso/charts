@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\Charts\App\Classes;
+namespace LaravelEnso\Charts\app\Classes;
 
-use LaravelEnso\Charts\App\Enums\ChartColorsEnum;
+use LaravelEnso\Charts\app\Enums\ChartColorsEnum;
 
 abstract class AbstractChart
 {
