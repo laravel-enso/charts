@@ -29,9 +29,7 @@
 <script>
 
 	export default {
-
 		props: {
-
 			type: {
 				type: String,
 				required: true
@@ -50,14 +48,11 @@
             },
 		},
 		data: function () {
-
 			return {
-
 				chart: null,
 	            loading: false,
 	            options: {},
 	            icons: {
-
 	            	bar: 'fa fa-bar-chart',
 	            	pie: 'fa fa-pie-chart',
 	            	line: 'fa fa-line-chart',
@@ -70,41 +65,37 @@
 		},
 		methods: {
 			getData: function() {
-
 				this.loading = true;
 
 				axios.get(this.source).then((response) => {
-
 					this.data = response.data;
 
 					if (response.data.hasOwnProperty('options')) {
-
 						this.options = response.options;
 					}
 
 					if (this.chart) {
-
 						this.chart.destroy();
 					}
 				}).then(() => {
-
 					this.chart = new Chart($("#canvas-" + this._uid), {
-
 			            type: this.type,
 			            data: this.data,
 			            options: this.options,
 		        	});
 
 		        	this.loading = false;
+				}).catch((error) => {
+					if (error.response.data.level) {
+						toastr[error.response.data.level](error.response.data.code + ' Error: ' + error.response.data.message);
+					}
 				});
 			},
 			resize: function() {
-
 				this.chart.resize();
 			}
 		},
 		mounted: function() {
-
 			this.getData();
 		}
 	};
