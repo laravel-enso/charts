@@ -42,6 +42,9 @@
 				type: String,
 				default: 'primary'
 			},
+			params: {
+				type: Object,
+			},
             draggable: {
             	type: Boolean,
             	default: false
@@ -67,7 +70,7 @@
 			getData: function() {
 				this.loading = true;
 
-				axios.get(this.source).then((response) => {
+				axios.get(this.source, { params:this.params }).then((response) => {
 					this.data = response.data;
 
 					if (response.data.hasOwnProperty('options')) {
