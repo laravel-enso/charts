@@ -11,7 +11,7 @@ class LineChart extends AbstractChart
         $colorIndex = 0;
 
         foreach ($this->datasets as $label => $dataset) {
-            $borderColor = $this->chartColors->getValueByKey($colorIndex);
+            $borderColor = $this->chartColors[$colorIndex];
 
             $this->data[] = [
                 'fill'             => $this->fill,

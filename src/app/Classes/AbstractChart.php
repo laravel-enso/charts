@@ -2,8 +2,6 @@
 
 namespace LaravelEnso\Charts\app\Classes;
 
-use LaravelEnso\Charts\app\Enums\ChartColorsEnum;
-
 abstract class AbstractChart
 {
     protected $datasets;
@@ -17,7 +15,7 @@ abstract class AbstractChart
         $this->opacity = 0.6;
         $this->labels = $lables;
         $this->datasets = $datasets;
-        $this->chartColors = new ChartColorsEnum();
+        $this->chartColors = $this->getColors();
         $this->buildChartData();
     }
 
@@ -33,5 +31,10 @@ abstract class AbstractChart
         $result = 'rgba('.implode(',', $rgb).','.$this->opacity.')';
 
         return $result;
+    }
+
+    private function getColors()
+    {
+        return array_values(config('charts.colors'));
     }
 }

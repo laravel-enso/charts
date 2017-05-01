@@ -14,8 +14,12 @@ class ChartsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
+            __DIR__.'/config/charts.php' => config_path('charts.php'),
+        ], 'charts-config');
+
+        $this->publishes([
             __DIR__.'/resources/assets/js/components' => resource_path('assets/js/vendor/laravel-enso/components'),
-        ], 'chart-component');
+        ], 'charts-component');
     }
 
     /**

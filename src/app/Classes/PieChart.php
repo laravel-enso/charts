@@ -9,7 +9,7 @@ class PieChart extends AbstractChart
     protected function buildChartData()
     {
         for ($colorIndex = 0; $colorIndex < count($this->labels); $colorIndex++) {
-            $this->backgroundColor[] = $this->chartColors->getValueByKey($colorIndex);
+            $this->backgroundColor[] = $this->chartColors[$colorIndex];
         }
     }
 

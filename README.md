@@ -10,9 +10,11 @@ Charts is a server side data builder for [Chart.js](http://www.chartjs.org), wit
 
 1. Add `'LaravelEnso\Chart\ChartServiceProvider::class'` to your providers list in config/app.php.
 
-2. Publish the vue component with `php artisa vendor:publish --tag=chart-component`
+2. Publish the config with `php artisan vendor:publish --tag=charts-config`
 
-3. Include chart.vue in you app.js
+3. Publish the vue component with `php artisan vendor:publish --tag=charts-component`
+
+4. Include chart.vue in you app.js
 
 ```
 Vue.component('chart',
@@ -20,44 +22,57 @@ Vue.component('chart',
 );
 ```
 
-4. Run `gulp`.
+5. Run `gulp`.
 
-5. In your controller add a method that will return the data for you chart
-
-```
-	public function getPieChartData()
-    {
-        $labels = ['Green', 'Red', 'Azzure'];
-
-        $datasets = [400, 50, 100];
-
-        $chart = new PieChart($labels, $datasets);
-
-        return $chart->getResponse();
-    }
-```
-
-6. Include the vue component in your view
+6. In your controller add a method that will return the data for you chart
 
 ```
-<chart :type="pie"
-	:source="charts.getPieChartData"
-	:collapsed="chart.collapsed">
+public function getPieChartData()
+{
+    $labels = ['Green', 'Red', 'Azzure'];
+    $datasets = [400, 50, 100];
+    $chart = new PieChart($labels, $datasets);
+
+    return $chart->getResponse();
+}
+```
+
+7. Use the vue component in your view
+
+```
+<chart ref="chart"
+	:type="pie"
+	:source="charts/getPieChartData">
 	<span slot="chart-title">Pie Chart</span>
 </chart>
 ```
 
-### Options:
+### Options
 
-	type - `bar`, `chart`, `pie`, `doughnut`, `radar`, `bubble`
-	source - The route that will go to the method above (getPieChartData())
-	headerClass - `primary`, `success`, `danger`, `info`, `warning`
-	draggable: Boolean. It works with vuedraggable. You will find an working example in LarvelEnso Core's Dashboard.
+	`type` - `bar`, `polarArea`, `pie`, `doughnut`, `radar`, `bubble` | (required)
+	`source` - The route path that will go to the method above (getPieChartData()) | (required)
+	`headerClass` - `primary`, `success`, `danger`, `info`, `warning` | (optional)
+	`options` - ChartJs options Object | (optional)
+	`draggable` - Boolean. It works with vuedraggable. You will find a working example in LarvelEnso Core's Dashboard. | (optional)
+
+### Methods
+
+	The following ChartJs methods are available on the component:
+	`init()`
+	`resize()`
+	`destroy()`
+
+	You can also use:
+	`getData()` to reload the data from server.
+
+	Call these methods with `vm.$refs.chart.method()`
 
 ### Note
 
-The laravel-enso/core package comes with this library included.
+The Chart builder will use the colors from `app/config/charts.php` (in that order) for the given datasets.
+
+The laravel-enso/core package comes with this library included (required in package.json).
 
 ### Contributions
 
-are welcome
+...are welcome

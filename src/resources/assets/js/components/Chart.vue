@@ -36,11 +36,17 @@
 			},
 			source: {
 				type: String,
-				required: true
+				default: ''
 			},
 			headerClass: {
 				type: String,
 				default: 'primary'
+			},
+			options: {
+				type: Object,
+				default() {
+					return {};
+				}
 			},
 			params: {
 				type: Object,
@@ -50,11 +56,11 @@
             	default: false
             },
 		},
-		data: function () {
+		data() {
 			return {
 				chart: null,
 	            loading: false,
-	            options: {},
+	            data: {},
 	            icons: {
 	            	bar: 'fa fa-bar-chart',
 	            	pie: 'fa fa-pie-chart',
@@ -67,39 +73,52 @@
 			};
 		},
 		methods: {
-			getData: function() {
+			getData() {
 				this.loading = true;
 
-				axios.get(this.source, { params:this.params }).then((response) => {
+				axios.get(this.source, { params:this.params }).then(response => {
 					this.data = response.data;
-
-					if (response.data.hasOwnProperty('options')) {
-						this.options = response.options;
-					}
-
-					if (this.chart) {
-						this.chart.destroy();
-					}
-				}).then(() => {
-					this.chart = new Chart($("#canvas-" + this._uid), {
-			            type: this.type,
-			            data: this.data,
-			            options: this.options,
-		        	});
-
-		        	this.loading = false;
-				}).catch((error) => {
+					this.loading = false;
+					this.updateData();
+				}).catch(error => {
+					this.loading = false;
 					if (error.response.data.level) {
 						toastr[error.response.data.level](error.response.data.message);
 					}
 				});
 			},
-			resize: function() {
+			init() {
+				this.chart = new Chart($("#canvas-" + this._uid), {
+		            type: this.type,
+		            data: this.data,
+		            options: this.options,
+	        	});
+			},
+			updateData() {
+				if (!this.chart) {
+					return this.init();
+				}
+
+				let data = this.data;
+
+				this.chart.data.datasets.forEach((dataset, index) => {
+					dataset.data = data.datasets[index].data;
+				});
+
+				this.chart.update();
+			},
+			resize() {
 				this.chart.resize();
+			},
+			destroy() {
+				this.chart.destroy();
 			}
 		},
-		mounted: function() {
+		mounted() {
 			this.getData();
+		},
+		beforeDestroy() {
+			this.destroy();
 		}
 	};
 

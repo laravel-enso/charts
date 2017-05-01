@@ -17,7 +17,7 @@ class BubbleChart extends AbstractChart
         $this->mapDatasetsWithLabels();
 
         foreach ($this->datasets as $label => $dataset) {
-            $borderColor = $this->chartColors->getValueByKey($colorIndex);
+            $borderColor = $this->chartColors[$colorIndex];
 
             $this->data[] = [
                 'label'                => $label,
