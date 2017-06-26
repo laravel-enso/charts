@@ -8,44 +8,44 @@ Charts is a server side data builder for [Chart.js](http://www.chartjs.org), wit
 
 ### Installation
 
-1. Add `'LaravelEnso\Chart\ChartServiceProvider::class'` to your providers list in config/app.php.
+1. Add `LaravelEnso\Chart\ChartServiceProvider::class` to your providers list in `config/app.php`.
 
 2. Publish the config with `php artisan vendor:publish --tag=charts-config`
 
 3. Publish the vue component with `php artisan vendor:publish --tag=charts-component`
 
-4. Include chart.vue in you app.js
+4. Include Chart.vue in you app.js
 
-```
-Vue.component('chart',
-	require('./vendor/laravel-enso/components/Chart.vue')
-);
-```
+    ```
+    Vue.component('chart',
+        require('./vendor/laravel-enso/components/Chart.vue')
+    );
+    ```
 
-5. Run `gulp`.
+5. Run `gulp` / `npm run webpack`.
 
 6. In your controller add a method that will return the data for you chart
 
-```
-public function getPieChartData()
-{
-    $labels = ['Green', 'Red', 'Azzure'];
-    $datasets = [400, 50, 100];
-    $chart = new PieChart($labels, $datasets);
-
-    return $chart->getResponse();
-}
-```
+    ```
+    public function getPieChartData()
+    {
+        $labels = ['Green', 'Red', 'Azzure'];
+        $datasets = [400, 50, 100];
+        $chart = new PieChart($labels, $datasets);
+    
+        return $chart->getResponse();
+    }
+    ```
 
 7. Use the vue component in your view
 
-```
-<chart ref="chart"
-	:type="pie"
-	:source="charts/getPieChartData">
-	<span slot="chart-title">Pie Chart</span>
-</chart>
-```
+    ```
+    <chart ref="chart"
+        :type="pie"
+        :source="charts/getPieChartData">
+        <span slot="chart-title">Pie Chart</span>
+    </chart>
+    ```
 
 ### Options
 
@@ -67,11 +67,17 @@ public function getPieChartData()
 
 	Call these methods with `vm.$refs.chart.method()`
 
+### Can publish
+- `php artisan vendor:publish --tag=charts-config` - the configuration file
+- `php artisan vendor:publish --tag=charts-component` - the VueJS component
+- `php artisan vendor:publish --tag=update` - a common alias for when wanting to update the VueJS component, 
+once a newer version is released.
+
 ### Note
 
-The Chart builder will use the colors from `app/config/charts.php` (in that order) for the given datasets.
+The Chart builder will use the colors from `app/config/charts.php` (in that order) for the given data-sets.
 
-The laravel-enso/core package comes with this library included (required in package.json).
+The `laravel-enso/core` package comes with this library included as a dependency (required in package.json).
 
 ### Contributions
 
