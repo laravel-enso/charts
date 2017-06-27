@@ -4,7 +4,8 @@
 [![Total Downloads](https://poser.pugx.org/laravel-enso/charts/downloads)](https://packagist.org/packages/laravel-enso/charts)
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/charts/version)](https://packagist.org/packages/laravel-enso/charts)
 
-Charts is a server side data builder for [Chart.js](http://www.chartjs.org), with a vue component for the frontend. It works best with AdminLte.
+This package is a server-side data builder for [Chart.js](http://www.chartjs.org), with a VueJS component for the frontend. 
+It works best with AdminLte.
 
 ### Installation
 
@@ -37,7 +38,7 @@ Charts is a server side data builder for [Chart.js](http://www.chartjs.org), wit
     }
     ```
 
-7. Use the vue component in your view
+7. Use the VueJS component in your view
 
     ```
     <chart ref="chart"
@@ -67,18 +68,22 @@ Charts is a server side data builder for [Chart.js](http://www.chartjs.org), wit
 
 	Call these methods with `vm.$refs.chart.method()`
 
-### Can publish
-- `php artisan vendor:publish --tag=charts-config` - the configuration file
-- `php artisan vendor:publish --tag=charts-component` - the VueJS component
-- `php artisan vendor:publish --tag=update` - a common alias for when wanting to update the VueJS component, 
-once a newer version is released.
-
-### Note
+### Notes
 
 The Chart builder will use the colors from `app/config/charts.php` (in that order) for the given data-sets.
 
-The `laravel-enso/core` package comes with this library included as a dependency (required in package.json).
+The [Laravel Enso Core](https://github.com/laravel-enso/Core) package comes with this package included.
+
+### Publishes
+
+- `php artisan vendor:publish --tag=charts-config` - the configuration file
+- `php artisan vendor:publish --tag=charts-component` - the VueJS component
+- `php artisan vendor:publish --tag=enso-update` - a common alias for when wanting to update the VueJS component, 
+once a newer version is released
+- `php artisan vendor:publish --tag=enso-config` - a common alias for when wanting to update the config, 
+once a newer version is released
+
 
 ### Contributions
 
-...are welcome
+are welcome

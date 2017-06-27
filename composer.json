@@ -1,18 +1,17 @@
 {
     "name": "laravel-enso/charts",
-    "description": "Charts wrapper for Chart.js",
+    "description": "This package is a server-side data builder for Chart.js, with a VueJS component for the frontend.",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "mishu",
+            "name": "Mishu",
             "email": "mishu@xtelecom.ro"
         }
     ],
     "require": {
-        "php": ">=5.6.4",
-        "laravel/framework": "5.4.*",
-        "laravel-enso/helpers": "1.1.*"
+        "php": ">=7.1.0",
+        "laravel/framework": "5.4.*"
     },
     "autoload": {
         "psr-4": {
