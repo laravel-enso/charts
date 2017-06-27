@@ -7,6 +7,11 @@
 This package is a server-side data builder for [Chart.js](http://www.chartjs.org), with a VueJS component for the frontend. 
 It works best with AdminLte.
 
+### Details
+- It supports Bar, Bubble, Line, Pie and Radar charts
+- It creates properly formatted data structures, specific for each supported type of chart from a given data-set
+- The colors used are configurable through the publishable config file
+
 ### Installation
 
 1. Add `LaravelEnso\Chart\ChartServiceProvider::class` to your providers list in `config/app.php`.
