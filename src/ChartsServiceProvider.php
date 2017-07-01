@@ -6,15 +6,12 @@ use Illuminate\Support\ServiceProvider;
 
 class ChartsServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
     public function boot()
     {
+        $this->mergeConfigFrom(__DIR__.'/config/charts.php', 'charts');
+
         $this->publishes([
-            __DIR__.'/config/charts.php' => config_path('charts.php'),
+            __DIR__.'/config/charts.php' => config_path('charts.php')
         ], 'charts-config');
 
         $this->publishes([
@@ -30,11 +27,6 @@ class ChartsServiceProvider extends ServiceProvider
         ], 'enso-config');
     }
 
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
     public function register()
     {
         //
