@@ -7,6 +7,8 @@
 This package is a server-side data builder for [Chart.js](http://www.chartjs.org), with a VueJS component for the frontend. 
 It works best with AdminLte.
 
+![Screenshot](https://laravel-enso.github.io/charts/screenshots/Selection_002.png)
+
 ### Details
 - It supports Bar, Bubble, Line, Pie and Radar charts
 - It creates properly formatted data structures, specific for each supported type of chart from a given data-set
