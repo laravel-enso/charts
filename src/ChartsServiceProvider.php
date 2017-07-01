@@ -11,7 +11,7 @@ class ChartsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/config/charts.php', 'charts');
 
         $this->publishes([
-            __DIR__.'/config/charts.php' => config_path('charts.php')
+            __DIR__.'/config/charts.php' => config_path('charts.php'),
         ], 'charts-config');
 
         $this->publishes([
