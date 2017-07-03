@@ -7,7 +7,7 @@
 This package is a server-side data builder for [Chart.js](http://www.chartjs.org), with a VueJS component for the frontend. 
 It works best with AdminLte.
 
-[![Watch the demo](https://laravel-enso.github.io/charts/screenshots/Selection_002.png)](https://laravel-enso.github.io/charts/videos/chart_refresh.webm)
+[![Watch the demo](https://laravel-enso.github.io/charts/screenshots/Selection_002.png)](https://laravel-enso.github.io/charts/videos/demo_01.webm)
 
 <sup>click on the photo to view a short demo in compatible browsers</sup>
 
@@ -18,13 +18,13 @@ It works best with AdminLte.
 
 ### Installation
 
-1. Add `LaravelEnso\Chart\ChartServiceProvider::class` to your providers list in `config/app.php`.
+1. Add `LaravelEnso\Chart\ChartServiceProvider::class` to your providers list in `config/app.php`
 
 2. Publish the config with `php artisan vendor:publish --tag=charts-config`
 
 3. Publish the vue component with `php artisan vendor:publish --tag=charts-component`
 
-4. Include Chart.vue in you app.js
+4. Include `Chart.vue` in you `app.js`:
 
     ```
     Vue.component('chart',
@@ -34,7 +34,7 @@ It works best with AdminLte.
 
 5. Run `gulp` / `npm run webpack`.
 
-6. In your controller add a method that will return the data for you chart
+6. In your controller add a method that will return the data for you chart:
 
     ```
     public function getPieChartData()
@@ -47,7 +47,7 @@ It works best with AdminLte.
     }
     ```
 
-7. Use the VueJS component in your view
+7. Use the VueJS component in your view:
 
     ```
     <chart ref="chart"
