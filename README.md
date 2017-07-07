@@ -1,9 +1,11 @@
+<!--h--> 
 # Charts
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/aa6c0917f8c6425f87eb94c01d84b2f8)](https://www.codacy.com/app/laravel-enso/Charts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/Charts&amp;utm_campaign=Badge_Grade)
 [![StyleCI](https://styleci.io/repos/85484767/shield?branch=master)](https://styleci.io/repos/85484767)
 [![License](https://poser.pugx.org/laravel-enso/charts/license)](https://https://packagist.org/packages/laravel-enso/charts)
 [![Total Downloads](https://poser.pugx.org/laravel-enso/charts/downloads)](https://packagist.org/packages/laravel-enso/charts)
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/charts/version)](https://packagist.org/packages/laravel-enso/charts)
+<!--/h-->
 
 This package is a server-side data builder for [Chart.js](http://www.chartjs.org), with a VueJS component for the frontend. 
 It works best with AdminLte.
@@ -14,10 +16,11 @@ It works best with AdminLte.
 
 <sup>click on the photo to view a short demo in compatible browsers</sup>
 
-### Details
-- It supports Bar, Bubble, Line, Pie and Radar charts
-- It creates properly formatted data structures, specific for each supported type of chart from a given data-set
-- The colors used are configurable through the publishable config file
+### Features
+
+- it supports Bar, Bubble, Line, Pie and Radar charts
+- it creates properly formatted data structures, specific for each supported type of chart from a given data-set
+- the colors used are configurable through the publishable config file
 
 ### Installation
 
@@ -62,29 +65,21 @@ It works best with AdminLte.
 
 ### Options
 
-	`type` - `bar`, `polarArea`, `pie`, `doughnut`, `radar`, `bubble` | (required)
-	`source` - The route path that will go to the method above (getPieChartData()) | (required)
-	`headerClass` - `primary`, `success`, `danger`, `info`, `warning` | (optional)
-	`options` - ChartJs options Object | (optional)
-	`draggable` - Boolean. It works with vuedraggable. You will find a working example in LarvelEnso Core's Dashboard. | (optional)
+- `type` - `bar`, `polarArea`, `pie`, `doughnut`, `radar`, `bubble` | (required)
+- `source` - The route path that will go to the method above (getPieChartData()) | (required)
+- `headerClass` - `primary`, `success`, `danger`, `info`, `warning` | (optional)
+- `options` - ChartJs options Object | (optional)
+- `draggable` - Boolean. It works with vuedraggable. You will find a working example in LarvelEnso Core's Dashboard. | (optional)
 
 ### Methods
 
-	The following ChartJs methods are available on the component:
-	`init()`
-	`resize()`
-	`destroy()`
+The following ChartJs methods are available on the component:
+- `init()`
+- `resize()`
+- `destroy()`
+- `getData()`, to reload the data from server.
 
-	You can also use:
-	`getData()` to reload the data from server.
-
-	Call these methods with `vm.$refs.chart.method()`
-
-### Notes
-
-The Chart builder will use the colors from `app/config/charts.php` (in that order) for the given data-sets.
-
-The [Laravel Enso Core](https://github.com/laravel-enso/Core) package comes with this package included.
+Call these methods with `vm.$refs.chart.method()`
 
 ### Publishes
 
@@ -95,7 +90,18 @@ once a newer version is released
 - `php artisan vendor:publish --tag=enso-config` - a common alias for when wanting to update the config, 
 once a newer version is released
 
+### Notes
 
+The Chart builder will use the colors from `app/config/charts.php` (in that order) for the given data-sets.
+
+The [Laravel Enso Core](https://github.com/laravel-enso/Core) package comes with this package included.
+
+<!--h-->
 ### Contributions
 
-are welcome
+are welcome. Pull requests are great, but issues are good too.
+
+### License
+
+This package is released under the MIT license.
+<!--/h-->
