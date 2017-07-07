@@ -10,6 +10,8 @@ It works best with AdminLte.
 
 [![Watch the demo](https://laravel-enso.github.io/charts/screenshots/Selection_002.png)](https://laravel-enso.github.io/charts/videos/demo_01.webm)
 
+[![Watch the demo](https://laravel-enso.github.io/charts/screenshots/Selection_044.png)](https://laravel-enso.github.io/charts/videos/demo_01.webm)
+
 <sup>click on the photo to view a short demo in compatible browsers</sup>
 
 ### Details
