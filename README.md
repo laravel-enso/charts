@@ -56,6 +56,7 @@ It works best with AdminLte.
     ```
     <chart ref="chart"
         :type="pie"
+        :title="title"
         :source="charts/getPieChartData">
         <span slot="chart-title">Pie Chart</span>
     </chart>
@@ -64,6 +65,7 @@ It works best with AdminLte.
 ### Options
 
 - `type` - `bar`, `polarArea`, `pie`, `doughnut`, `radar`, `bubble` | (required)
+- `title` - chart title | (optional)
 - `source` - The route path that will go to the method above (getPieChartData()) | (required)
 - `headerClass` - `primary`, `success`, `danger`, `info`, `warning` | (optional)
 - `options` - ChartJs options Object | (optional)
