@@ -7,7 +7,7 @@
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/charts/version)](https://packagist.org/packages/laravel-enso/charts)
 <!--/h-->
 
-This package is a server-side data builder for [Chart.js](http://www.chartjs.org), with a VueJS component for the frontend.
+Server-side data builder for [Chart.js](http://www.chartjs.org), with a VueJS component for the frontend.
 It works best with AdminLte.
 
 [![Watch the demo](https://laravel-enso.github.io/charts/screenshots/Selection_002_thumb.png)](https://laravel-enso.github.io/charts/videos/demo_01.webm)

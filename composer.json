@@ -1,12 +1,19 @@
 {
     "name": "laravel-enso/charts",
-    "description": "This package is a server-side data builder for Chart.js, with a VueJS component for the frontend.",
+    "description": "Server-side data builder for Chart.js, with a VueJS component for the frontend.",
+    "keywords": [
+        "laravel-enso",
+        "charts"
+    ],
+    "homepage": "https://github.com/laravel-enso/Charts",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Mishu",
-            "email": "mishu@xtelecom.ro"
+            "name": "Adrian Ocneanu",
+            "email": "aocneanu@gmail.com",
+            "homepage": "https://laravel-enso.com",
+            "role": "Developer"
         }
     ],
     "require": {
