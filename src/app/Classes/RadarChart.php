@@ -6,6 +6,18 @@ class RadarChart extends AbstractChart
 {
     public $fill = false;
 
+    public function getResponse()
+    {
+        return [
+            'data' => [
+                'labels'   => $this->labels,
+                'datasets' => $this->data,
+            ],
+            'options' => $this->options,
+            'title' => $this->title
+        ];
+    }
+
     protected function buildChartData()
     {
         $colorIndex = 0;
@@ -23,13 +35,5 @@ class RadarChart extends AbstractChart
 
             $colorIndex++;
         }
-    }
-
-    public function getResponse()
-    {
-        return [
-            'labels'   => $this->labels,
-            'datasets' => $this->data,
-        ];
     }
 }

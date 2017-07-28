@@ -9,12 +9,16 @@ abstract class AbstractChart
     protected $chartColors;
     protected $data = [];
     protected $opacity;
+    protected $title;
+    protected $options = [];
 
-    public function __construct($lables, $datasets)
+    public function __construct($labels, $datasets, $title = null, $options = [])
     {
         $this->opacity = 0.6;
-        $this->labels = $lables;
+        $this->labels = $labels;
         $this->datasets = $datasets;
+        $this->options = $options;
+        $this->title = $title;
         $this->chartColors = $this->getColors();
         $this->buildChartData();
     }

@@ -8,6 +8,15 @@ class BubbleChart extends AbstractChart
     public $maxRadius = 25;
     private $maxDatasetsRadius;
 
+    public function getResponse()
+    {
+        return [
+            'data' => [ 'datasets' => $this->data ],
+            'options' => $this->options,
+            'title' => $this->title
+        ];
+    }
+
     protected function buildChartData()
     {
         $colorIndex = 0;
@@ -29,14 +38,6 @@ class BubbleChart extends AbstractChart
 
             $colorIndex++;
         }
-    }
-
-    public function getResponse()
-    {
-        return [
-
-            'datasets' => $this->data,
-        ];
     }
 
     private function resizeBubbleChartDatasetRadius()

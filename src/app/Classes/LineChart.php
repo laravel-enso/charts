@@ -4,7 +4,24 @@ namespace LaravelEnso\Charts\app\Classes;
 
 class LineChart extends AbstractChart
 {
-    public $fill = false;
+    private $fill = false;
+
+    public function getResponse()
+    {
+        return [
+            'data' => [
+                'labels'   => $this->labels,
+                'datasets' => $this->data,
+            ],
+            'options' => $this->options,
+            'title' => $this->title
+        ];
+    }
+
+    public function setFill()
+    {
+        $this->fill = true;
+    }
 
     protected function buildChartData()
     {
@@ -26,13 +43,5 @@ class LineChart extends AbstractChart
 
             $colorIndex++;
         }
-    }
-
-    public function getResponse()
-    {
-        return [
-            'labels'   => $this->labels,
-            'datasets' => $this->data,
-        ];
     }
 }
