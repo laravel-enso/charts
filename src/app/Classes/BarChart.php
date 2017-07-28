@@ -8,11 +8,11 @@ class BarChart extends AbstractChart
     {
         return [
             'data' => [
-                'labels' => $this->labels,
+                'labels'   => $this->labels,
                 'datasets' => $this->data,
             ],
             'options' => $this->options,
-            'title' => $this->title
+            'title'   => $this->title,
         ];
     }
 
@@ -20,10 +20,10 @@ class BarChart extends AbstractChart
     {
         $this->options['scales'] = [
             'xAxes' => [
-                [ 'stacked' => true ],
+                ['stacked' => true],
             ],
             'yAxes' => [
-                [ 'stacked' => true ],
+                ['stacked' => true],
             ],
         ];
 
@@ -36,9 +36,9 @@ class BarChart extends AbstractChart
 
         foreach ($this->datasets as $label => $dataset) {
             $this->data[] = [
-                'label' => $label,
+                'label'           => $label,
                 'backgroundColor' => $this->chartColors[$colorIndex],
-                'data' => $dataset
+                'data'            => $dataset,
             ];
 
             $colorIndex++;

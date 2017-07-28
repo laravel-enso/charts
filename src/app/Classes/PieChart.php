@@ -10,11 +10,11 @@ class PieChart extends AbstractChart
     {
         return [
             'data' => [
-                'labels' => $this->labels,
+                'labels'   => $this->labels,
                 'datasets' => $this->getDatasets(),
             ],
             'options' => $this->options,
-            'title' => $this->title
+            'title'   => $this->title,
         ];
     }
 
@@ -33,7 +33,7 @@ class PieChart extends AbstractChart
 
         return [
             [
-                'data' => $this->datasets,
+                'data'            => $this->datasets,
                 'backgroundColor' => $this->backgroundColor,
             ],
         ];
@@ -45,7 +45,7 @@ class PieChart extends AbstractChart
 
         foreach ($this->datasets as $dataset) {
             $datasets[] = [
-                'data' => $dataset,
+                'data'            => $dataset,
                 'backgroundColor' => $this->backgroundColor,
             ];
         }

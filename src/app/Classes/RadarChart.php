@@ -14,7 +14,7 @@ class RadarChart extends AbstractChart
                 'datasets' => $this->data,
             ],
             'options' => $this->options,
-            'title' => $this->title
+            'title'   => $this->title,
         ];
     }
 
