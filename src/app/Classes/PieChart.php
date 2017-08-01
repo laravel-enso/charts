@@ -27,16 +27,14 @@ class PieChart extends AbstractChart
 
     private function getDatasets()
     {
-        if (is_array($this->datasets[0])) {
-            return $this->getStackedDatasets();
-        }
-
-        return [
-            [
-                'data'            => $this->datasets,
-                'backgroundColor' => $this->backgroundColor,
-            ],
-        ];
+        return is_array($this->datasets[0])
+            ? $this->getStackedDatasets()
+            : [
+                [
+                    'data'            => $this->datasets,
+                    'backgroundColor' => $this->backgroundColor,
+                ],
+            ];
     }
 
     private function getStackedDatasets()

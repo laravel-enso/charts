@@ -5,13 +5,13 @@ namespace LaravelEnso\Charts\app\Classes;
 class BubbleChart extends AbstractChart
 {
     public $fill = false;
-    public $maxRadius = 25;
-    private $maxDatasetsRadius;
+    public $radiusLimit = 25;
+    private $maxRadius;
 
     public function getResponse()
     {
         return [
-            'data'    => ['datasets' => $this->data],
+            'data'    => [ 'datasets' => $this->data ],
             'options' => $this->options,
             'title'   => $this->title,
         ];
@@ -19,11 +19,15 @@ class BubbleChart extends AbstractChart
 
     protected function buildChartData()
     {
-        $colorIndex = 0;
+        $this->setMaxRadius();
+        $this->computeRadius();
+        $this->mapDatasetsLabels();
+        $this->setData();
+    }
 
-        $this->getBubbleChartDatasetMaxRadius();
-        $this->resizeBubbleChartDatasetRadius();
-        $this->mapDatasetsWithLabels();
+    private function setData()
+    {
+        $colorIndex = 0;
 
         foreach ($this->datasets as $label => $dataset) {
             $borderColor = $this->chartColors[$colorIndex];
@@ -40,16 +44,16 @@ class BubbleChart extends AbstractChart
         }
     }
 
-    private function resizeBubbleChartDatasetRadius()
+    private function computeRadius()
     {
         foreach ($this->datasets as &$dataset) {
             foreach ($dataset as &$bubble) {
-                $bubble[2] = round($this->maxRadius * $bubble[2] / $this->maxDatasetsRadius, 2);
+                $bubble[2] = round($this->radiusLimit * $bubble[2] / $this->maxRadius, 2);
             }
         }
     }
 
-    private function getBubbleChartDatasetMaxRadius()
+    private function setMaxRadius()
     {
         $maxArray = [];
 
@@ -57,12 +61,15 @@ class BubbleChart extends AbstractChart
             $maxArray[] = max(array_column($dataset, 2));
         }
 
-        $this->maxDatasetsRadius = max($maxArray);
+        $this->maxRadius = max($maxArray);
     }
 
-    private function mapDatasetsWithLabels()
+    private function mapDatasetsLabels()
     {
-        $this->datasets = array_combine(array_values($this->labels), array_values($this->datasets));
+        $this->datasets = array_combine(
+            array_values($this->labels),
+            array_values($this->datasets)
+        );
     }
 
     private function buildDatasetArray($dataset)
