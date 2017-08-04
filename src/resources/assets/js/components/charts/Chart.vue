@@ -1,30 +1,17 @@
 <template>
-	<div :class="'box box-' + headerClass">
-        <div class="box-header with-border">
-	        <h3 class="box-title">
-	        	<i :class="icons[type]"></i>
-                {{ title }}
-            </h3>
-            <div class="box-tools pull-right">
-                <button type="button"
-                	class="btn btn-box-tool btn-sm"
-                	@click="getData()">
-                    <i class="fa fa-refresh"></i>
-                </button>
-                <button class="btn btn-box-tool btn-sm"
-                	data-widget="collapse">
-                    <i class="fa fa-minus">
-                    </i>
-                </button>
-            </div>
-        </div>
-        <div class="box-body">
+
+	<box :theme="theme"
+        collapsible refresh removable
+        :solid="solid"
+        :open="true"
+        @refresh="get()"
+        :icon="icons[type]"
+        :title="title"
+        :overlay="loading">
+        <div class="chart">
         	<canvas :id="'canvas-' + _uid"></canvas>
     	</div>
-    	<div class="overlay" v-if="loading">
-    		<i class="fa fa-spin fa-spinner spinner-custom"></i>
-    	</div>
-    </div>
+    </box>
 </template>
 
 <script>
@@ -39,9 +26,13 @@
 				type: String,
 				default: ''
 			},
-			headerClass: {
+			theme: {
 				type: String,
 				default: 'primary'
+			},
+			solid: {
+				type: Boolean,
+				default: false
 			},
 			params: {
 				type: Object,
@@ -68,7 +59,7 @@
 		},
 
 		methods: {
-			getData() {
+			get() {
 				this.loading = true;
 
 				axios.get(this.source, { params:this.params }).then(response => {
@@ -111,7 +102,7 @@
 		},
 
 		mounted() {
-			this.getData();
+			this.get();
 		},
 
 		beforeDestroy() {
