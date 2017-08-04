@@ -11,7 +11,7 @@ class BubbleChart extends AbstractChart
     public function getResponse()
     {
         return [
-            'data'    => [ 'datasets' => $this->data ],
+            'data'    => ['datasets' => $this->data],
             'options' => $this->options,
             'title'   => $this->title,
         ];
