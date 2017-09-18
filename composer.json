@@ -18,12 +18,20 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel/framework": "5.4.*",
-        "laravel-enso/vueadminlte": "^1.0"
+        "laravel/framework": "5.5.*",
+        "laravel-enso/vueadminlte": "^1.3"
     },
     "autoload": {
         "psr-4": {
             "LaravelEnso\\Charts\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelEnso\\Charts\\ChartsServiceProvider"
+            ],
+            "aliases": {}
         }
     }
 }
