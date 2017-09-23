@@ -6,6 +6,13 @@ class RadarChart extends AbstractChart
 {
     public $fill = false;
 
+    public function __construct()
+    {
+        parent::__construct(...func_get_args());
+
+        $this->setType('radar');
+    }
+
     public function getResponse()
     {
         return [
@@ -15,6 +22,7 @@ class RadarChart extends AbstractChart
             ],
             'options' => $this->options,
             'title'   => $this->title,
+            'type' => $this->type
         ];
     }
 

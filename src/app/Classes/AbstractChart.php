@@ -12,8 +12,9 @@ abstract class AbstractChart
     protected $data = [];
     protected $title;
     protected $options;
+    protected $type;
 
-    public function __construct($labels, $datasets, $title = null, $options = [])
+    public function __construct($labels, $datasets, $title = null, $options = null)
     {
         $this->labels = $labels;
         $this->datasets = $datasets;
@@ -27,6 +28,10 @@ abstract class AbstractChart
 
     abstract public function getResponse();
 
+    protected function setType(string $type) {
+        $this->type = $type;
+    }
+
     protected function hex2rgba($color)
     {
         $color = substr($color, 1);
@@ -39,6 +44,6 @@ abstract class AbstractChart
 
     private function getColors()
     {
-        return array_values(config('charts.colors'));
+        return array_values(config('enso.charts.colors'));
     }
 }

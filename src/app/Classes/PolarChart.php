@@ -2,12 +2,12 @@
 
 namespace LaravelEnso\Charts\app\Classes;
 
-class PieChart extends PiePolarOrDoughnutChart
+class PolarChart extends PiePolarOrDoughnutChart
 {
 	public function __construct()
     {
         parent::__construct(...func_get_args());
 
-        $this->setType('pie');
+        $this->setType('polarArea');
     }
 }

@@ -4,6 +4,12 @@ namespace LaravelEnso\Charts\app\Classes;
 
 class BarChart extends AbstractChart
 {
+    public function __construct()
+    {
+        parent::__construct(...func_get_args());
+
+        $this->setType('bar');
+    }
     public function getResponse()
     {
         return [
@@ -13,6 +19,7 @@ class BarChart extends AbstractChart
             ],
             'options' => $this->options,
             'title'   => $this->title,
+            'type' => $this->type
         ];
     }
 

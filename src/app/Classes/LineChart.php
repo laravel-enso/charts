@@ -6,6 +6,13 @@ class LineChart extends AbstractChart
 {
     private $fill = false;
 
+    public function __construct()
+    {
+        parent::__construct(...func_get_args());
+
+        $this->setType('line');
+    }
+
     public function getResponse()
     {
         return [
@@ -15,6 +22,7 @@ class LineChart extends AbstractChart
             ],
             'options' => $this->options,
             'title'   => $this->title,
+            'type' => $this->type
         ];
     }
 

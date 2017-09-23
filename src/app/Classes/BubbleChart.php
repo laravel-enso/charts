@@ -4,6 +4,13 @@ namespace LaravelEnso\Charts\app\Classes;
 
 class BubbleChart extends AbstractChart
 {
+    public function __construct()
+    {
+        parent::__construct(...func_get_args());
+
+        $this->setType('bubble');
+    }
+
     public $fill = false;
     public $radiusLimit = 25;
     private $maxRadius;
@@ -14,6 +21,7 @@ class BubbleChart extends AbstractChart
             'data'    => ['datasets' => $this->data],
             'options' => $this->options,
             'title'   => $this->title,
+            'type' => $this->type
         ];
     }
 
