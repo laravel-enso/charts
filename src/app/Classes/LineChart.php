@@ -22,7 +22,7 @@ class LineChart extends AbstractChart
             ],
             'options' => $this->options,
             'title'   => $this->title,
-            'type' => $this->type
+            'type'    => $this->type,
         ];
     }
 

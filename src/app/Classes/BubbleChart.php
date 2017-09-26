@@ -21,7 +21,7 @@ class BubbleChart extends AbstractChart
             'data'    => ['datasets' => $this->data],
             'options' => $this->options,
             'title'   => $this->title,
-            'type' => $this->type
+            'type'    => $this->type,
         ];
     }
 

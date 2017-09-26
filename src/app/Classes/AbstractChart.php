@@ -28,7 +28,8 @@ abstract class AbstractChart
 
     abstract public function getResponse();
 
-    protected function setType(string $type) {
+    protected function setType(string $type)
+    {
         $this->type = $type;
     }
 

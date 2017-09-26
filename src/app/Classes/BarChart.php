@@ -10,6 +10,7 @@ class BarChart extends AbstractChart
 
         $this->setType('bar');
     }
+
     public function getResponse()
     {
         return [
@@ -19,7 +20,7 @@ class BarChart extends AbstractChart
             ],
             'options' => $this->options,
             'title'   => $this->title,
-            'type' => $this->type
+            'type'    => $this->type,
         ];
     }
 

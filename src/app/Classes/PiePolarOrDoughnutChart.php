@@ -15,7 +15,7 @@ abstract class PiePolarOrDoughnutChart extends AbstractChart
             ],
             'options' => $this->options,
             'title'   => $this->title,
-            'type' => $this->type
+            'type'    => $this->type,
         ];
     }
 
