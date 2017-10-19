@@ -7,8 +7,8 @@
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/charts/version)](https://packagist.org/packages/laravel-enso/charts)
 <!--/h-->
 
-Server-side data builder for [Chart.js](http://www.chartjs.org), with a VueJS component for the frontend.
-It works best with AdminLte.
+Server-side data builder for [Chart.js](http://www.chartjs.org), with 2 [Bulma](https://bulma.io) styled, [VueJS](https://vuejs.org/) components for the frontend.
+
 
 [![Watch the demo](https://laravel-enso.github.io/charts/screenshots/Selection_002_thumb.png)](https://laravel-enso.github.io/charts/videos/demo_01.webm)
 
@@ -19,16 +19,18 @@ It works best with AdminLte.
 - it supports Bar, Bubble, Line, Pie and Radar charts
 - it creates properly formatted data structures, specific for each supported type of chart from a given data-set
 - the colors used are configurable through the publishable config file
+- comes with a `Chart.vue` VueJS component meant to be included anywhere
+- comes with a `ChartCard.vue` VueJS component meant to be used as card containing the chart
+- uses the [VueComponents](https://github.com/laravel-enso/VueComponents) package in order to load its VueJS components
 
 ### Installation
 
-1. Add `LaravelEnso\Chart\ChartServiceProvider::class` to your providers list in `config/app.php`
 
-2. Publish the config with `php artisan vendor:publish --tag=charts-config`
+1. Publish the config with `php artisan vendor:publish --tag=charts-config`
 
-3. Publish the vue component with `php artisan vendor:publish --tag=charts-component`
+2. Publish the vue component with `php artisan vendor:publish --tag=charts-component`
 
-4. Include `Chart.vue` in you `app.js`:
+3. Include `Chart.vue` in you `app.js`:
 
     ```
     Vue.component('chart',
@@ -51,44 +53,52 @@ It works best with AdminLte.
     }
     ```
 
-7. Use the VueJS component in your view:
+7. Use the VueJS component(s) in your view:
 
     ```
     <chart ref="chart"
         :type="pie"
-        :title="title"
-        :source="charts/getPieChartData">
-        <span slot="chart-title">Pie Chart</span>
+        :data="chartDataObject"
+        :options="chartOptionsObject">        
     </chart>
+    
+    <chart-card
+        :source="charts/getMyChartData"
+        :params="paramsObject">
+    <chart-card>
+    
     ```
 
 ### Options
-
+The `Chart.vue` component can be used anywhere and can be integrated into any other component or page, and takes the following parameters:
 - `type` - `bar`, `polarArea`, `pie`, `doughnut`, `radar`, `bubble` | (required)
-- `title` - chart title | (optional)
-- `source` - The route path that will go to the method above (getPieChartData()) | (required)
-- `headerClass` - `primary`, `success`, `danger`, `info`, `warning` | (optional)
-- `options` - ChartJs options Object | (optional)
-- `draggable` - Boolean. It works with vuedraggable. You will find a working example in LarvelEnso Core's Dashboard. | (optional)
+- `data` - object containing the properly formatted data for the given chart type | (required)
+- `options` - ChartJs options object | (optional)
+
+The `ChartCard.vue` component is a chart in a Bulma card, and is meant to be used to retrieve its own data, and take the following parameters:
+- `source` - the route path that will fetch the data | (required)
+- `params` - parameters object that gets passed to the backend, may be used for customization of the data-set | (optional)
+
 
 ### Methods
+The following methods are available on the components
 
-The following ChartJs methods are available on the component:
-- `init()`
-- `resize()`
-- `destroy()`
-- `getData()`, to reload the data from server.
+* Chart.vue
+    - `init()`
+    - `update()`
+* ChartCard.vue
+    - `get()`, to reload the data from server
 
 Call these methods with `vm.$refs.chart.method()`
 
 ### Publishes
 
 - `php artisan vendor:publish --tag=charts-config` - the configuration file
-- `php artisan vendor:publish --tag=charts-component` - the VueJS component
-- `php artisan vendor:publish --tag=enso-update` - a common alias for when wanting to update the VueJS component,
-once a newer version is released
+- `php artisan vendor:publish --tag=vue-components` - the VueJS components
+- `php artisan vendor:publish --tag=enso-assets` - a common alias for when wanting to update the VueJS component,
+once a newer version is released, can be used with the `--force` flag
 - `php artisan vendor:publish --tag=enso-config` - a common alias for when wanting to update the config,
-once a newer version is released
+once a newer version is released, can be used with the `--force` flag
 
 ### Notes
 
