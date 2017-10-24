@@ -10,7 +10,7 @@
 Server-side data builder for [Chart.js](http://www.chartjs.org), with 2 [Bulma](https://bulma.io) styled, [VueJS](https://vuejs.org/) components for the frontend.
 
 
-[![Watch the demo](https://laravel-enso.github.io/charts/screenshots/Selection_002_thumb.png)](https://laravel-enso.github.io/charts/videos/demo_01.webm)
+[![Watch the demo](https://laravel-enso.github.io/charts/screenshots/bulma_cap002_thumb.png)](https://laravel-enso.github.io/charts/videos/bulma_demo_01.webm)
 
 <sup>click on the photo to view a short demo in compatible browsers</sup>
 
