@@ -14,6 +14,7 @@ Server-side data builder for [Chart.js](http://www.chartjs.org), with 2 [Bulma](
 
 <sup>click on the photo to view a short demo in compatible browsers</sup>
 
+
 ### Features
 
 - it supports Bar, Bubble, Line, Pie and Radar charts
