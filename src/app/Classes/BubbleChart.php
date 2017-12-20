@@ -18,10 +18,10 @@ class BubbleChart extends AbstractChart
     public function getResponse()
     {
         return [
-            'data'    => ['datasets' => $this->data],
+            'data' => ['datasets' => $this->data],
             'options' => $this->options,
-            'title'   => $this->title,
-            'type'    => $this->type,
+            'title' => $this->title,
+            'type' => $this->type,
         ];
     }
 
@@ -41,11 +41,11 @@ class BubbleChart extends AbstractChart
             $borderColor = $this->chartColors[$colorIndex];
 
             $this->data[] = [
-                'label'                => $label,
-                'borderColor'          => $borderColor,
-                'backgroundColor'      => $this->hex2rgba($borderColor),
+                'label' => $label,
+                'borderColor' => $borderColor,
+                'backgroundColor' => $this->hex2rgba($borderColor),
                 'hoverBackgroundColor' => $this->hex2rgba($borderColor, 0.6),
-                'data'                 => $this->buildDatasetArray($dataset),
+                'data' => $this->buildDatasetArray($dataset),
             ];
 
             $colorIndex++;

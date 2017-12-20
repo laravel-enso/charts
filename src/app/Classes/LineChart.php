@@ -17,12 +17,12 @@ class LineChart extends AbstractChart
     {
         return [
             'data' => [
-                'labels'   => $this->labels,
+                'labels' => $this->labels,
                 'datasets' => $this->data,
             ],
             'options' => $this->options,
-            'title'   => $this->title,
-            'type'    => $this->type,
+            'title' => $this->title,
+            'type' => $this->type,
         ];
     }
 
@@ -39,14 +39,14 @@ class LineChart extends AbstractChart
             $borderColor = $this->chartColors[$colorIndex];
 
             $this->data[] = [
-                'fill'             => $this->fill,
-                'lineTension'      => 0.1,
+                'fill' => $this->fill,
+                'lineTension' => 0.1,
                 'pointHoverRadius' => 5,
-                'pointHitRadius'   => 10,
-                'label'            => $label,
-                'borderColor'      => $borderColor,
-                'backgroundColor'  => $this->hex2rgba($borderColor),
-                'data'             => $dataset,
+                'pointHitRadius' => 10,
+                'label' => $label,
+                'borderColor' => $borderColor,
+                'backgroundColor' => $this->hex2rgba($borderColor),
+                'data' => $dataset,
             ];
 
             $colorIndex++;

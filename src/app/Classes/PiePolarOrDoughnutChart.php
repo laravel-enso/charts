@@ -10,12 +10,12 @@ abstract class PiePolarOrDoughnutChart extends AbstractChart
     {
         return [
             'data' => [
-                'labels'   => $this->labels,
+                'labels' => $this->labels,
                 'datasets' => $this->getDatasets(),
             ],
             'options' => $this->options,
-            'title'   => $this->title,
-            'type'    => $this->type,
+            'title' => $this->title,
+            'type' => $this->type,
         ];
     }
 
@@ -32,7 +32,7 @@ abstract class PiePolarOrDoughnutChart extends AbstractChart
             ? $this->getStackedDatasets()
             : [
                 [
-                    'data'            => $this->datasets,
+                    'data' => $this->datasets,
                     'backgroundColor' => $this->backgroundColor,
                 ],
             ];
@@ -44,7 +44,7 @@ abstract class PiePolarOrDoughnutChart extends AbstractChart
 
         foreach ($this->datasets as $dataset) {
             $datasets[] = [
-                'data'            => $dataset,
+                'data' => $dataset,
                 'backgroundColor' => $this->backgroundColor,
             ];
         }

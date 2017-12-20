@@ -17,12 +17,12 @@ class RadarChart extends AbstractChart
     {
         return [
             'data' => [
-                'labels'   => $this->labels,
+                'labels' => $this->labels,
                 'datasets' => $this->data,
             ],
             'options' => $this->options,
-            'title'   => $this->title,
-            'type'    => $this->type,
+            'title' => $this->title,
+            'type' => $this->type,
         ];
     }
 
@@ -34,11 +34,11 @@ class RadarChart extends AbstractChart
             $borderColor = $this->chartColors[$colorIndex];
 
             $this->data[] = [
-                'label'            => $label,
-                'borderColor'      => $borderColor,
-                'backgroundColor'  => $this->hex2rgba($borderColor),
+                'label' => $label,
+                'borderColor' => $borderColor,
+                'backgroundColor' => $this->hex2rgba($borderColor),
                 'pointBorderColor' => '#fff',
-                'data'             => $dataset,
+                'data' => $dataset,
             ];
 
             $colorIndex++;
