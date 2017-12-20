@@ -10,6 +10,7 @@ enabled:
 
 disabled:
   - short_array_syntax
+  - not_operator_with_successor_space
 
 finder:
   exclude:
