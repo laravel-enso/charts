@@ -4,7 +4,7 @@ namespace LaravelEnso\Charts;
 
 use Illuminate\Support\ServiceProvider;
 
-class ChartsServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
