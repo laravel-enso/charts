@@ -17,28 +17,23 @@ Server-side data builder for [Chart.js](http://www.chartjs.org), with 2 [Bulma](
 
 ### Features
 
-- it supports Bar, Bubble, Line, Pie and Radar charts
+- it supports Bar, Bubble, Line, Pie, Doughnut, Polar Area and Radar charts
 - it creates properly formatted data structures, specific for each supported type of chart from a given data-set
 - the colors used are configurable through the publishable config file
 - comes with a `Chart.vue` VueJS component meant to be included anywhere
 - comes with a `ChartCard.vue` VueJS component meant to be used as card containing the chart
-- uses the [VueComponents](https://github.com/laravel-enso/VueComponents) package in order to load its VueJS components
 
 ### Installation
 
 1. Publish the config with `php artisan vendor:publish --tag=charts-config`
 
-2. Publish the vue component with `php artisan vendor:publish --tag=charts-component`
-
-3. Include `Chart.vue` in your `app.js`:
+3. Include `ChartCard.vue` in your page/component:
 
     ```
-    Vue.component('chart',
-        require('./vendor/laravel-enso/components/Chart.vue')
-    );
+    import ChartCard from '../../components/enso/charts/ChartCard.vue';
     ```
 
-5. Run `gulp` / `npm run webpack`.
+5. Run `npm run webpack`
 
 6. In your controller add a method that will return the data for you chart:
 
@@ -94,20 +89,17 @@ Call these methods with `vm.$refs.chart.method()`
 ### Publishes
 
 - `php artisan vendor:publish --tag=charts-config` - the configuration file
-- `php artisan vendor:publish --tag=vue-components` - the VueJS components
+- `php artisan vendor:publish --tag=charts-assets` - the VueJS components
 - `php artisan vendor:publish --tag=enso-assets` - a common alias for when wanting to update the VueJS components,
-once a newer version is released, can be used with the `--force` flag
+once a newer version is released, usually used with the `--force` flag
 - `php artisan vendor:publish --tag=enso-config` - a common alias for when wanting to update the config,
-once a newer version is released, can be used with the `--force` flag
+once a newer version is released, usually used with the `--force` flag
 
 ### Notes
 
-The Chart builder will use the colors from `app/config/charts.php` (in that order) for the given data-sets.
+The Chart builder will use the colors from `app/config/enso/charts.php` (in that order) for the given data-sets.
 
 The [Laravel Enso Core](https://github.com/laravel-enso/Core) package comes with this package included.
-
-Depends on:
- - [VueComponents](https://github.com/laravel-enso/VueComponents) for the accompanying VueJS components
 
 <!--h-->
 ### Contributions
