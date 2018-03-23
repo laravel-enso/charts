@@ -41,7 +41,7 @@ class RadarChart extends AbstractChart
                 'pointBorderColor' => '#fff',
                 'data' => $dataset,
                 'datalabels' => [
-                    'backgroundColor' => $color
+                    'backgroundColor' => $color,
                 ],
             ];
         });

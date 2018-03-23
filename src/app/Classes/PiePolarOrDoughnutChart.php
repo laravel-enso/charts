@@ -31,8 +31,8 @@ abstract class PiePolarOrDoughnutChart extends AbstractChart
                     'data' => $this->datasets,
                     'backgroundColor' => $this->colors,
                     'datalabels' => [
-                        'backgroundColor' => $this->colors
-                    ]
+                        'backgroundColor' => $this->colors,
+                    ],
                 ],
             ];
     }
@@ -44,8 +44,8 @@ abstract class PiePolarOrDoughnutChart extends AbstractChart
                 'data' => $dataset,
                 'backgroundColor' => $this->colors,
                 'datalabels' => [
-                    'backgroundColor' => $this->colors
-                ]
+                    'backgroundColor' => $this->colors,
+                ],
             ];
         });
     }

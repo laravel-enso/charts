@@ -80,7 +80,7 @@ class BubbleChart extends AbstractChart
                 'hoverBackgroundColor' => $this->hex2rgba($color, 0.6),
                 'data' => $this->dataset($dataset),
                 'datalabels' => [
-                    'backgroundColor' => $color
+                    'backgroundColor' => $color,
                 ],
             ];
         });
