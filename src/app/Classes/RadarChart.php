@@ -8,12 +8,13 @@ class RadarChart extends AbstractChart
 
     public function __construct()
     {
-        parent::__construct(...func_get_args());
+        parent::__construct();
 
-        $this->setType('radar');
+        $this->type('radar')
+            ->ratio(1);
     }
 
-    public function getResponse()
+    public function response()
     {
         return [
             'data' => [
@@ -26,22 +27,23 @@ class RadarChart extends AbstractChart
         ];
     }
 
-    protected function buildChartData()
+    protected function build()
     {
         $colorIndex = 0;
 
-        foreach ($this->datasets as $label => $dataset) {
-            $borderColor = $this->chartColors[$colorIndex];
+        collect($this->datasets)->each(function ($dataset, $label) {
+            $color = $this->color();
 
             $this->data[] = [
                 'label' => $label,
-                'borderColor' => $borderColor,
-                'backgroundColor' => $this->hex2rgba($borderColor),
+                'borderColor' => $color,
+                'backgroundColor' => $this->hex2rgba($color),
                 'pointBorderColor' => '#fff',
                 'data' => $dataset,
+                'datalabels' => [
+                    'backgroundColor' => $color
+                ],
             ];
-
-            $colorIndex++;
-        }
+        });
     }
 }

@@ -6,12 +6,12 @@ abstract class PiePolarOrDoughnutChart extends AbstractChart
 {
     private $backgroundColor = [];
 
-    public function getResponse()
+    public function response()
     {
         return [
             'data' => [
                 'labels' => $this->labels,
-                'datasets' => $this->getDatasets(),
+                'datasets' => $this->data,
             ],
             'options' => $this->options,
             'title' => $this->title,
@@ -19,36 +19,34 @@ abstract class PiePolarOrDoughnutChart extends AbstractChart
         ];
     }
 
-    protected function buildChartData()
+    protected function build()
     {
-        for ($colorIndex = 0; $colorIndex < count($this->labels); $colorIndex++) {
-            $this->backgroundColor[] = $this->chartColors[$colorIndex];
-        }
-    }
+        $this->colors = collect($this->colors())
+            ->slice(0, count($this->labels));
 
-    private function getDatasets()
-    {
-        return is_array($this->datasets[0])
-            ? $this->getStackedDatasets()
+        $this->data = is_array($this->datasets[0])
+            ? $this->stackedDatasets()
             : [
                 [
                     'data' => $this->datasets,
-                    'backgroundColor' => $this->backgroundColor,
+                    'backgroundColor' => $this->colors,
+                    'datalabels' => [
+                        'backgroundColor' => $this->colors
+                    ]
                 ],
             ];
     }
 
-    private function getStackedDatasets()
+    private function stackedDatasets()
     {
-        $datasets = [];
-
-        foreach ($this->datasets as $dataset) {
-            $datasets[] = [
+        return collect($this->datasets)->map(function ($dataset) {
+            return [
                 'data' => $dataset,
-                'backgroundColor' => $this->backgroundColor,
+                'backgroundColor' => $this->colors,
+                'datalabels' => [
+                    'backgroundColor' => $this->colors
+                ]
             ];
-        }
-
-        return $datasets;
+        });
     }
 }

@@ -6,12 +6,13 @@ class BarChart extends AbstractChart
 {
     public function __construct()
     {
-        parent::__construct(...func_get_args());
+        parent::__construct();
 
-        $this->setType('bar');
+        $this->type('bar')
+            ->ratio(1.6);
     }
 
-    public function getResponse()
+    protected function response()
     {
         return [
             'data' => [
@@ -24,7 +25,7 @@ class BarChart extends AbstractChart
         ];
     }
 
-    public function setStackedScales()
+    public function stackedScales()
     {
         $this->options['scales'] = [
             'xAxes' => [
@@ -38,18 +39,17 @@ class BarChart extends AbstractChart
         return $this;
     }
 
-    protected function buildChartData()
+    protected function build()
     {
-        $colorIndex = 0;
-
-        foreach ($this->datasets as $label => $dataset) {
+        collect($this->datasets)->each(function ($dataset, $label) {
             $this->data[] = [
                 'label' => $label,
-                'backgroundColor' => $this->chartColors[$colorIndex],
+                'backgroundColor' => $this->color(),
                 'data' => $dataset,
+                'datalabels' => [
+                    'backgroundColor' => $this->color(),
+                ],
             ];
-
-            $colorIndex++;
-        }
+        });
     }
 }

@@ -8,12 +8,13 @@ class LineChart extends AbstractChart
 
     public function __construct()
     {
-        parent::__construct(...func_get_args());
+        parent::__construct();
 
-        $this->setType('line');
+        $this->type('line')
+            ->ratio(1.6);
     }
 
-    public function getResponse()
+    public function response()
     {
         return [
             'data' => [
@@ -26,30 +27,33 @@ class LineChart extends AbstractChart
         ];
     }
 
-    public function setFill()
+    public function fill()
     {
         $this->fill = true;
+
+        return $this;
     }
 
-    protected function buildChartData()
+    protected function build()
     {
         $colorIndex = 0;
 
-        foreach ($this->datasets as $label => $dataset) {
-            $borderColor = $this->chartColors[$colorIndex];
+        collect($this->datasets)->each(function ($dataset, $label) {
+            $color = $this->color();
 
             $this->data[] = [
                 'fill' => $this->fill,
                 'lineTension' => 0.1,
                 'pointHoverRadius' => 5,
-                'pointHitRadius' => 10,
+                'pointHitRadius' => 5,
                 'label' => $label,
-                'borderColor' => $borderColor,
-                'backgroundColor' => $this->hex2rgba($borderColor),
+                'borderColor' => $color,
+                'backgroundColor' => $this->hex2rgba($color),
                 'data' => $dataset,
+                'datalabels' => [
+                    'backgroundColor' => $color,
+                ],
             ];
-
-            $colorIndex++;
-        }
+        });
     }
 }

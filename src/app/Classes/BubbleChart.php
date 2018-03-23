@@ -6,16 +6,17 @@ class BubbleChart extends AbstractChart
 {
     public function __construct()
     {
-        parent::__construct(...func_get_args());
+        parent::__construct();
 
-        $this->setType('bubble');
+        $this->type('bubble')
+            ->ratio(1.6);
     }
 
-    public $fill = false;
-    public $radiusLimit = 25;
+    private $fill = false;
+    private $radiusLimit = 25;
     private $maxRadius;
 
-    public function getResponse()
+    public function response()
     {
         return [
             'data' => ['datasets' => $this->data],
@@ -25,51 +26,36 @@ class BubbleChart extends AbstractChart
         ];
     }
 
-    protected function buildChartData()
+    protected function build()
     {
-        $this->setMaxRadius();
-        $this->computeRadius();
-        $this->mapDatasetsLabels();
-        $this->setData();
-    }
-
-    private function setData()
-    {
-        $colorIndex = 0;
-
-        foreach ($this->datasets as $label => $dataset) {
-            $borderColor = $this->chartColors[$colorIndex];
-
-            $this->data[] = [
-                'label' => $label,
-                'borderColor' => $borderColor,
-                'backgroundColor' => $this->hex2rgba($borderColor),
-                'hoverBackgroundColor' => $this->hex2rgba($borderColor, 0.6),
-                'data' => $this->buildDatasetArray($dataset),
-            ];
-
-            $colorIndex++;
-        }
-    }
-
-    private function computeRadius()
-    {
-        foreach ($this->datasets as &$dataset) {
-            foreach ($dataset as &$bubble) {
-                $bubble[2] = round($this->radiusLimit * $bubble[2] / $this->maxRadius, 2);
-            }
-        }
+        $this->setMaxRadius()
+            ->computeRadius()
+            ->mapDatasetsLabels()
+            ->setData();
     }
 
     private function setMaxRadius()
     {
-        $maxArray = [];
+        $this->maxRadius = collect($this->datasets)->map(function ($dataset) {
+            return max(array_column($dataset, 2));
+        })->max();
 
-        foreach ($this->datasets as $dataset) {
-            $maxArray[] = max(array_column($dataset, 2));
-        }
+        return $this;
+    }
 
-        $this->maxRadius = max($maxArray);
+    private function computeRadius()
+    {
+        $this->datasets = collect($this->datasets)->map(function ($dataset) {
+            $dataset = collect($dataset)->map(function ($bubble) {
+                $bubble[2] = round($this->radiusLimit * $bubble[2] / $this->maxRadius, 2);
+
+                return $bubble;
+            });
+
+            return $dataset;
+        })->toArray();
+
+        return $this;
     }
 
     private function mapDatasetsLabels()
@@ -78,20 +64,36 @@ class BubbleChart extends AbstractChart
             array_values($this->labels),
             array_values($this->datasets)
         );
+
+        return $this;
     }
 
-    private function buildDatasetArray($dataset)
+    private function setData()
     {
-        $datasetArray = [];
+        collect($this->datasets)->each(function ($dataset, $label) {
+            $color = $this->color();
 
-        foreach ($dataset as $values) {
-            $datasetArray[] = [
+            $this->data[] = [
+                'label' => $label,
+                'borderColor' => $color,
+                'backgroundColor' => $this->hex2rgba($color),
+                'hoverBackgroundColor' => $this->hex2rgba($color, 0.6),
+                'data' => $this->dataset($dataset),
+                'datalabels' => [
+                    'backgroundColor' => $color
+                ],
+            ];
+        });
+    }
+
+    private function dataset($dataset)
+    {
+        return collect($dataset)->map(function ($values) {
+            return [
                 'x' => $values[0],
                 'y' => $values[1],
                 'r' => $values[2],
             ];
-        }
-
-        return $datasetArray;
+        });
     }
 }

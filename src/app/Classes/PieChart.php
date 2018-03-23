@@ -6,8 +6,9 @@ class PieChart extends PiePolarOrDoughnutChart
 {
     public function __construct()
     {
-        parent::__construct(...func_get_args());
+        parent::__construct();
 
-        $this->setType('pie');
+        $this->type('pie')
+            ->ratio(1);
     }
 }
