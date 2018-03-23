@@ -12,7 +12,6 @@ class BubbleChart extends AbstractChart
             ->ratio(1.6);
     }
 
-    private $fill = false;
     private $radiusLimit = 25;
     private $maxRadius;
 
