@@ -36,8 +36,6 @@ class LineChart extends Chart
 
     protected function build()
     {
-        $colorIndex = 0;
-
         collect($this->datasets)->each(function ($dataset, $label) {
             $color = $this->color();
 
