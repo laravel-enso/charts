@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\Charts\app\Classes;
 
-class RadarChart extends AbstractChart
+class RadarChart extends Chart
 {
     public $fill = false;
 

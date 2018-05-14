@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\Charts\app\Classes;
 
-class LineChart extends AbstractChart
+class LineChart extends Chart
 {
     private $fill = false;
 

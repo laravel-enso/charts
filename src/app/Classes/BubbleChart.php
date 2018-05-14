@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\Charts\app\Classes;
 
-class BubbleChart extends AbstractChart
+class BubbleChart extends Chart
 {
     public function __construct()
     {

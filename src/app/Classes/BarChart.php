@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\Charts\app\Classes;
 
-class BarChart extends AbstractChart
+class BarChart extends Chart
 {
     public function __construct()
     {

@@ -2,7 +2,9 @@
 
 namespace LaravelEnso\Charts\app\Classes;
 
-abstract class AbstractChart
+use Illuminate\Contracts\Support\Responsable;
+
+abstract class Chart implements Responsable
 {
     private const Opacity = 0.25;
 
@@ -19,16 +21,16 @@ abstract class AbstractChart
         $this->colors = $this->colors();
     }
 
-    abstract protected function build();
-
-    abstract protected function response();
-
-    public function get()
+    public function toResponse($request)
     {
         $this->build();
 
         return $this->response();
     }
+
+    abstract protected function build();
+
+    abstract protected function response();
 
     public function title(string $title)
     {

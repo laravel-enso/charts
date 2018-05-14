@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\Charts\app\Classes;
 
-abstract class PiePolarOrDoughnutChart extends AbstractChart
+abstract class PiePolarOrDoughnutChart extends Chart
 {
     private $backgroundColor = [];
 
