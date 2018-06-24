@@ -84,6 +84,11 @@ abstract class Chart
         return $this->colors[$index];
     }
 
+    protected function colors()
+    {
+        return $this->colors;
+    }
+
     protected function setColors()
     {
         $this->colors = array_values(config('enso.charts.colors'));
