@@ -2,6 +2,8 @@
 
 namespace LaravelEnso\Charts\app\Classes;
 
+use LaravelEnso\Helpers\app\Classes\Obj;
+
 abstract class Chart
 {
     private const Opacity = 0.25;
@@ -12,11 +14,12 @@ abstract class Chart
     protected $data = [];
     protected $title;
     protected $type;
-    protected $options = [];
+    protected $options;
 
     public function __construct()
     {
-        $this->colors = $this->colors();
+        $this->setColors();
+        $this->setOptions();
     }
 
     public function get()
@@ -81,8 +84,20 @@ abstract class Chart
         return $this->colors[$index];
     }
 
-    protected function colors()
+    protected function setColors()
     {
-        return array_values(config('enso.charts.colors'));
+        $this->colors = array_values(config('enso.charts.colors'));
+    }
+
+    private function setOptions()
+    {
+        $this->options['scales'] = new Obj(['xAxes' => [
+            new Obj([
+                'ticks' => [
+                    'autoSkip' => false,
+                    'maxRotation' => 90,
+                ],
+            ])
+        ]]);
     }
 }
