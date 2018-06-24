@@ -97,7 +97,7 @@ abstract class Chart
                     'autoSkip' => false,
                     'maxRotation' => 90,
                 ],
-            ])
+            ]),
         ]]);
     }
 }
