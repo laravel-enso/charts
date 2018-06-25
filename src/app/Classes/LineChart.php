@@ -11,7 +11,8 @@ class LineChart extends Chart
         parent::__construct();
 
         $this->type('line')
-            ->ratio(1.6);
+            ->ratio(1.6)
+            ->ticks();
     }
 
     public function response()

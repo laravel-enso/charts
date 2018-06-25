@@ -18,8 +18,7 @@ abstract class Chart
 
     public function __construct()
     {
-        $this->setColors();
-        $this->setOptions();
+        $this->colors();
     }
 
     public function get()
@@ -86,15 +85,14 @@ abstract class Chart
 
     protected function colors()
     {
+        if (!$this->colors) {
+            $this->colors = array_values(config('enso.charts.colors'));
+        }
+
         return $this->colors;
     }
 
-    protected function setColors()
-    {
-        $this->colors = array_values(config('enso.charts.colors'));
-    }
-
-    private function setOptions()
+    protected function ticks()
     {
         $this->options['scales'] = new Obj(['xAxes' => [
             new Obj([
