@@ -23,11 +23,11 @@ class AppServiceProvider extends ServiceProvider
         ], 'enso-config');
 
         $this->publishes([
-            __DIR__.'/resources/assets/js' => resource_path('assets/js'),
+            __DIR__.'/resources/js' => resource_path('js'),
         ], 'charts-assets');
 
         $this->publishes([
-            __DIR__.'/resources/assets/js' => resource_path('assets/js'),
+            __DIR__.'/resources/js' => resource_path('js'),
         ], 'enso-assets');
     }
 
