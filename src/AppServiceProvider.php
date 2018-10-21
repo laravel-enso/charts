@@ -8,11 +8,12 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->publishesAll();
         $this->mergeConfigFrom(__DIR__.'/config/charts.php', 'enso.charts');
+
+        $this->publishDependencies();
     }
 
-    public function publishesAll()
+    public function publishDependencies()
     {
         $this->publishes([
             __DIR__.'/config' => config_path('enso'),
