@@ -1,6 +1,7 @@
 <?php
 
     return [
+        'fillBackgroundOpacity' => 0.25,
         'colors' => [
             'Green' => '#008000',
             'Red' => '#FF0000',

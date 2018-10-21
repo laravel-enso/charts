@@ -6,8 +6,6 @@ use LaravelEnso\Helpers\app\Classes\Obj;
 
 abstract class Chart
 {
-    private const Opacity = 0.25;
-
     protected $datasets;
     protected $labels;
     protected $colors;
@@ -73,7 +71,7 @@ abstract class Chart
         $hex = [$color[0].$color[1], $color[2].$color[3], $color[4].$color[5]];
         $rgb = array_map('hexdec', $hex);
 
-        return 'rgba('.implode(',', $rgb).','.self::Opacity.')';
+        return 'rgba('.implode(',', $rgb).','.config('enso.charts.fillBackgroundOpacity').')';
     }
 
     protected function color($index = null)
