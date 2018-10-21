@@ -85,7 +85,7 @@ abstract class Chart
 
     protected function colors()
     {
-        if (!$this->colors) {
+        if (! $this->colors) {
             $this->colors = array_values(config('enso.charts.colors'));
         }
 
