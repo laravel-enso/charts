@@ -19,7 +19,7 @@
     "require": {
         "php": ">=7.1.0",
         "laravel/framework": "5.7.*",
-        "laravel-enso/vuecomponents": "2.6.*"
+        "laravel-enso/vuecomponents": "2.7.*"
     },
     "autoload": {
         "psr-4": {
