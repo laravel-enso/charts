@@ -113,14 +113,14 @@ export default {
     watch: {
         params: {
             handler() {
-                this.get();
+                this.fetch();
             },
             deep: true,
         },
     },
 
     mounted() {
-        this.get();
+        this.fetch();
     },
 
     methods: {
