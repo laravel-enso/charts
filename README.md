@@ -22,7 +22,7 @@ Server-side data builder for [Chart.js](http://www.chartjs.org), with 2 [Bulma](
 
 ### Configuration & Usage
 
-Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/packages/charts.html)
+Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/backend/charts.html)
 
 
 ### Contributions
