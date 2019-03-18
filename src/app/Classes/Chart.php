@@ -13,6 +13,7 @@ abstract class Chart
     protected $title;
     protected $type;
     protected $options;
+    protected $scales;
 
     public function __construct()
     {
@@ -90,15 +91,27 @@ abstract class Chart
         return $this->colors;
     }
 
-    protected function ticks()
+    protected function scales()
     {
-        $this->options['scales'] = new Obj(['xAxes' => [
-            new Obj([
-                'ticks' => [
-                    'autoSkip' => false,
-                    'maxRotation' => 90,
+        $this->options['scales'] = new Obj([
+            'xAxes' => [
+                [
+                    'ticks' => [
+                        'autoSkip' => false,
+                        'maxRotation' => 90,
+                    ],
+                    'gridLines' => [
+                        'display' => false
+                    ]
                 ],
-            ]),
-        ]]);
+            ],
+            'yAxes' => [
+                [
+                    'gridLines' => [
+                        'display' => false
+                    ]
+                ],
+            ]
+        ]);
     }
 }

@@ -10,7 +10,7 @@ class BarChart extends Chart
 
         $this->type('bar')
             ->ratio(1.6)
-            ->ticks();
+            ->scales();
     }
 
     protected function response()

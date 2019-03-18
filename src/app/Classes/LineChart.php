@@ -12,7 +12,7 @@ class LineChart extends Chart
 
         $this->type('line')
             ->ratio(1.6)
-            ->ticks();
+            ->scales();
     }
 
     public function response()
@@ -42,7 +42,7 @@ class LineChart extends Chart
 
             $this->data[] = [
                 'fill' => $this->fill,
-                'lineTension' => 0.1,
+                'lineTension' => 0.3,
                 'pointHoverRadius' => 5,
                 'pointHitRadius' => 5,
                 'label' => $label,
