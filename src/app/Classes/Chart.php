@@ -108,17 +108,17 @@ abstract class Chart
                         'maxRotation' => 90,
                     ],
                     'gridLines' => [
-                        'display' => false
-                    ]
+                        'display' => false,
+                    ],
                 ],
             ],
             'yAxes' => [
                 [
                     'gridLines' => [
-                        'display' => false
-                    ]
+                        'display' => false,
+                    ],
                 ],
-            ]
+            ],
         ]);
     }
 }
