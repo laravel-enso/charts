@@ -12,7 +12,7 @@ abstract class Chart
     protected $data = [];
     protected $title;
     protected $type;
-    protected $options;
+    protected $options = [];
     protected $scales;
 
     public function __construct()
@@ -55,6 +55,13 @@ abstract class Chart
     public function ratio(float $ratio)
     {
         $this->options['aspectRatio'] = $ratio;
+
+        return $this;
+    }
+
+    public function option($option, $value)
+    {
+        $this->options[$option] = $value;
 
         return $this;
     }
