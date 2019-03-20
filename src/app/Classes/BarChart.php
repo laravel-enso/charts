@@ -26,6 +26,13 @@ class BarChart extends Chart
         ];
     }
 
+    public function horizontal()
+    {
+        $this->type('horizontalBar');
+
+        return $this;
+    }
+
     public function stackedScales()
     {
         $this->options['scales'] = [
