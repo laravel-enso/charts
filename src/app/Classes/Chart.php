@@ -101,24 +101,14 @@ abstract class Chart
     protected function scales()
     {
         $this->options['scales'] = new Obj([
-            'xAxes' => [
-                [
-                    'ticks' => [
-                        'autoSkip' => false,
-                        'maxRotation' => 90,
-                    ],
-                    'gridLines' => [
-                        'display' => false,
-                    ],
+            'xAxes' => [[
+                'ticks' => [
+                    'autoSkip' => false,
+                    'maxRotation' => 90,
                 ],
-            ],
-            'yAxes' => [
-                [
-                    'gridLines' => [
-                        'display' => false,
-                    ],
-                ],
-            ],
+                'gridLines' => ['display' => false],
+            ]],
+            'yAxes' => [['gridLines' => ['display' => false]]],
         ]);
     }
 }

@@ -49,9 +49,7 @@ class LineChart extends Chart
                 'borderColor' => $color,
                 'backgroundColor' => $this->hex2rgba($color),
                 'data' => $dataset,
-                'datalabels' => [
-                    'backgroundColor' => $color,
-                ],
+                'datalabels' => ['backgroundColor' => $color],
             ];
         });
     }

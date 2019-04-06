@@ -45,13 +45,11 @@ class BubbleChart extends Chart
     private function computeRadius()
     {
         $this->datasets = collect($this->datasets)->map(function ($dataset) {
-            $dataset = collect($dataset)->map(function ($bubble) {
+            return collect($dataset)->map(function ($bubble) {
                 $bubble[2] = round($this->radiusLimit * $bubble[2] / $this->maxRadius, 2);
 
                 return $bubble;
             });
-
-            return $dataset;
         })->toArray();
 
         return $this;

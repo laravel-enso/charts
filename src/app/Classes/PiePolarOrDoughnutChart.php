@@ -24,15 +24,11 @@ abstract class PiePolarOrDoughnutChart extends Chart
 
         $this->data = is_array($this->datasets[0])
             ? $this->stackedDatasets()
-            : [
-                [
+            : [[
                     'data' => $this->datasets,
                     'backgroundColor' => $this->colors,
-                    'datalabels' => [
-                        'backgroundColor' => $this->colors,
-                    ],
-                ],
-            ];
+                    'datalabels' => ['backgroundColor' => $this->colors],
+            ]];
     }
 
     private function stackedDatasets()
@@ -41,9 +37,7 @@ abstract class PiePolarOrDoughnutChart extends Chart
             return [
                 'data' => $dataset,
                 'backgroundColor' => $this->colors,
-                'datalabels' => [
-                    'backgroundColor' => $this->colors,
-                ],
+                'datalabels' => ['backgroundColor' => $this->colors],
             ];
         });
     }

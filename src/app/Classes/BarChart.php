@@ -36,12 +36,8 @@ class BarChart extends Chart
     public function stackedScales()
     {
         $this->options['scales'] = [
-            'xAxes' => [
-                ['stacked' => true],
-            ],
-            'yAxes' => [
-                ['stacked' => true],
-            ],
+            'xAxes' => [['stacked' => true]],
+            'yAxes' => [['stacked' => true]],
         ];
 
         return $this;
@@ -54,9 +50,7 @@ class BarChart extends Chart
                 'label' => $label,
                 'backgroundColor' => $this->color(),
                 'data' => $dataset,
-                'datalabels' => [
-                    'backgroundColor' => $this->color(),
-                ],
+                'datalabels' => ['backgroundColor' => $this->color()],
             ];
         });
     }
