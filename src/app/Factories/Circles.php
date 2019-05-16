@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\Charts\app\Classes;
+namespace LaravelEnso\Charts\app\Factories;
 
-abstract class PiePolarOrDoughnutChart extends Chart
+abstract class PiePolarOrDoughnut extends Chart
 {
     public function response()
     {

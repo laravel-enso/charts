@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Charts\app\Classes;
+namespace LaravelEnso\Charts\app\Factories;
 
 use LaravelEnso\Helpers\app\Classes\Obj;
 

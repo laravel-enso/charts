@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\Charts\app\Classes;
+namespace LaravelEnso\Charts\app\Factories;
 
-class PieChart extends PiePolarOrDoughnutChart
+class Pie extends Circles
 {
     public function __construct()
     {

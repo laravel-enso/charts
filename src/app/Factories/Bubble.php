@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\Charts\app\Classes;
+namespace LaravelEnso\Charts\app\Factories;
 
-class BubbleChart extends Chart
+class Bubble extends Chart
 {
     public function __construct()
     {

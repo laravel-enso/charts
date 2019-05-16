@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\Charts\app\Classes;
+namespace LaravelEnso\Charts\app\Factories;
 
-class LineChart extends Chart
+class Line extends Chart
 {
     private $fill = false;
 

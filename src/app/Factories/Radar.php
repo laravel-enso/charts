@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\Charts\app\Classes;
+namespace LaravelEnso\Charts\app\Factories;
 
-class RadarChart extends Chart
+class Radar extends Chart
 {
     public $fill = false;
 

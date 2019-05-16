@@ -5,7 +5,7 @@
         "laravel-enso",
         "charts"
     ],
-    "homepage": "https://github.com/laravel-enso/Charts",
+    "homepage": "https://github.com/laravel-enso/charts",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -19,7 +19,7 @@
     "require": {
         "php": ">=7.1.0",
         "laravel/framework": "5.8.*",
-        "laravel-enso/helpers": "1.10.*"
+        "laravel-enso/helpers": "1.11.*"
     },
     "autoload": {
         "psr-4": {

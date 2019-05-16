@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\Charts\app\Classes;
+namespace LaravelEnso\Charts\app\Factories;
 
-class BarChart extends Chart
+class Bar extends Chart
 {
     public function __construct()
     {
