@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\Charts\app\Factories;
 
-abstract class PiePolarOrDoughnut extends Chart
+abstract class Circles extends Chart
 {
     public function response()
     {
