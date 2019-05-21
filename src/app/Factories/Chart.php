@@ -2,8 +2,6 @@
 
 namespace LaravelEnso\Charts\app\Factories;
 
-use LaravelEnso\Helpers\app\Classes\Obj;
-
 abstract class Chart
 {
     protected $datasets;
@@ -100,7 +98,7 @@ abstract class Chart
 
     protected function scales()
     {
-        $this->options['scales'] = new Obj([
+        $this->options['scales'] = [
             'xAxes' => [[
                 'ticks' => [
                     'autoSkip' => false,
@@ -109,6 +107,6 @@ abstract class Chart
                 'gridLines' => ['display' => false],
             ]],
             'yAxes' => [['gridLines' => ['display' => false]]],
-        ]);
+        ];
     }
 }
