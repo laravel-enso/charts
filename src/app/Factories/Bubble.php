@@ -9,7 +9,8 @@ class Bubble extends Chart
         parent::__construct();
 
         $this->type('bubble')
-            ->ratio(1.6);
+            ->ratio(1.6)
+            ->scales();
     }
 
     private $radiusLimit = 25;
