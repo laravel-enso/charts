@@ -4,14 +4,23 @@ namespace LaravelEnso\Charts\app\Factories;
 
 class Radar extends Chart
 {
-    public $fill = false;
+    private $fill;
 
     public function __construct()
     {
         parent::__construct();
 
+        $this->fill = false;
+
         $this->type('radar')
             ->ratio(1);
+    }
+
+    public function fill()
+    {
+        $this->fill = true;
+
+        return $this;
     }
 
     public function response()

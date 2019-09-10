@@ -4,11 +4,13 @@ namespace LaravelEnso\Charts\app\Factories;
 
 class Line extends Chart
 {
-    private $fill = false;
+    private $fill;
 
     public function __construct()
     {
         parent::__construct();
+
+        $this->fill = false;
 
         $this->type('line')
             ->ratio(1.6)

@@ -4,17 +4,19 @@ namespace LaravelEnso\Charts\app\Factories;
 
 class Bubble extends Chart
 {
+    private $radiusLimit;
+    private $maxRadius;
+
     public function __construct()
     {
         parent::__construct();
+
+        $this->radiusLimit = 25;
 
         $this->type('bubble')
             ->ratio(1.6)
             ->scales();
     }
-
-    private $radiusLimit = 25;
-    private $maxRadius;
 
     public function response()
     {

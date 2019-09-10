@@ -7,16 +7,22 @@ abstract class Chart
     protected $datasets;
     protected $labels;
     protected $colors;
-    protected $data = [];
+    protected $data;
     protected $title;
     protected $type;
-    protected $options = [];
+    protected $options;
     protected $scales;
 
     public function __construct()
     {
+        $this->data = [];
+        $this->options = [];
         $this->colors();
     }
+
+    abstract protected function build();
+
+    abstract protected function response();
 
     public function get()
     {
@@ -24,10 +30,6 @@ abstract class Chart
 
         return $this->response();
     }
-
-    abstract protected function build();
-
-    abstract protected function response();
 
     public function title(string $title)
     {
