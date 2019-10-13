@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "laravel/framework": "6.0.*",
+        "laravel/framework": "^6.0",
         "laravel-enso/helpers": "1.13.*"
     },
     "autoload": {
