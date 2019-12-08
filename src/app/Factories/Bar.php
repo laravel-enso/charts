@@ -13,19 +13,6 @@ class Bar extends Chart
             ->scales();
     }
 
-    protected function response()
-    {
-        return [
-            'data' => [
-                'labels' => $this->labels,
-                'datasets' => $this->data,
-            ],
-            'options' => $this->options,
-            'title' => $this->title,
-            'type' => $this->type,
-        ];
-    }
-
     public function horizontal()
     {
         $this->type('horizontalBar');
@@ -41,6 +28,19 @@ class Bar extends Chart
         ];
 
         return $this;
+    }
+
+    protected function response()
+    {
+        return [
+            'data' => [
+                'labels' => $this->labels,
+                'datasets' => $this->data,
+            ],
+            'options' => $this->options,
+            'title' => $this->title,
+            'type' => $this->type,
+        ];
     }
 
     protected function build()

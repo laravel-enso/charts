@@ -25,9 +25,9 @@ abstract class Circles extends Chart
         $this->data = is_array($this->datasets[0])
             ? $this->stackedDatasets()
             : [[
-                    'data' => $this->datasets,
-                    'backgroundColor' => $this->colors,
-                    'datalabels' => ['backgroundColor' => $this->colors],
+                'data' => $this->datasets,
+                'backgroundColor' => $this->colors,
+                'datalabels' => ['backgroundColor' => $this->colors],
             ]];
     }
 

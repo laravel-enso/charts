@@ -30,13 +30,13 @@ class Bubble extends Chart
 
     protected function build()
     {
-        $this->setMaxRadius()
+        $this->maxRadius()
             ->computeRadius()
             ->mapDatasetsLabels()
-            ->setData();
+            ->data();
     }
 
-    private function setMaxRadius()
+    private function maxRadius()
     {
         $this->maxRadius = collect($this->datasets)->map(function ($dataset) {
             return max(array_column($dataset, 2));
@@ -68,7 +68,7 @@ class Bubble extends Chart
         return $this;
     }
 
-    private function setData()
+    private function data()
     {
         collect($this->datasets)->each(function ($dataset, $label) {
             $color = $this->color();

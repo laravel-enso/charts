@@ -20,10 +20,6 @@ abstract class Chart
         $this->colors();
     }
 
-    abstract protected function build();
-
-    abstract protected function response();
-
     public function get()
     {
         $this->build();
@@ -65,6 +61,10 @@ abstract class Chart
 
         return $this;
     }
+
+    abstract protected function build();
+
+    abstract protected function response();
 
     protected function type(string $type)
     {
