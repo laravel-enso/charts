@@ -84,9 +84,7 @@ abstract class Chart
 
     protected function color($index = null)
     {
-        $index = $index ?? count($this->data);
-
-        return $this->colors[$index];
+        return $this->colors[$index ?? count($this->data)];
     }
 
     protected function colors()

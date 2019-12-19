@@ -38,22 +38,22 @@ class Bubble extends Chart
 
     private function maxRadius()
     {
-        $this->maxRadius = collect($this->datasets)->map(function ($dataset) {
-            return max(array_column($dataset, 2));
-        })->max();
+        $this->maxRadius = collect($this->datasets)
+            ->map(fn($dataset) => max(array_column($dataset, 2)))
+            ->max();
 
         return $this;
     }
 
     private function computeRadius()
     {
-        $this->datasets = collect($this->datasets)->map(function ($dataset) {
-            return collect($dataset)->map(function ($bubble) {
+        $this->datasets = collect($this->datasets)->map(fn($dataset) => (
+            collect($dataset)->map(function ($bubble) {
                 $bubble[2] = round($this->radiusLimit * $bubble[2] / $this->maxRadius, 2);
 
                 return $bubble;
-            });
-        })->toArray();
+            })
+        ))->toArray();
 
         return $this;
     }
@@ -88,12 +88,10 @@ class Bubble extends Chart
 
     private function dataset($dataset)
     {
-        return collect($dataset)->map(function ($values) {
-            return [
-                'x' => $values[0],
-                'y' => $values[1],
-                'r' => $values[2],
-            ];
-        });
+        return collect($dataset)->map(fn($values) => [
+            'x' => $values[0],
+            'y' => $values[1],
+            'r' => $values[2],
+        ]);
     }
 }
