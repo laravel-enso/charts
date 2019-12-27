@@ -86,7 +86,7 @@ abstract class Chart
         $rgba = implode(',', $rgb);
         $opacity = config('enso.charts.fillBackgroundOpacity');
 
-        return "rgba({$rgba},$opacity)";
+        return "rgba({$rgba},{$opacity})";
     }
 
     protected function color($index = null)
