@@ -39,7 +39,7 @@ class Bubble extends Chart
     private function maxRadius()
     {
         $this->maxRadius = collect($this->datasets)
-            ->map(fn($dataset) => max(array_column($dataset, 2)))
+            ->map(fn ($dataset) => max(array_column($dataset, 2)))
             ->max();
 
         return $this;
@@ -47,7 +47,7 @@ class Bubble extends Chart
 
     private function computeRadius()
     {
-        $this->datasets = collect($this->datasets)->map(fn($dataset) => (
+        $this->datasets = collect($this->datasets)->map(fn ($dataset) => (
             collect($dataset)->map(function ($bubble) {
                 $bubble[2] = round($this->radiusLimit * $bubble[2] / $this->maxRadius, 2);
 
@@ -88,7 +88,7 @@ class Bubble extends Chart
 
     private function dataset($dataset)
     {
-        return collect($dataset)->map(fn($values) => [
+        return collect($dataset)->map(fn ($values) => [
             'x' => $values[0],
             'y' => $values[1],
             'r' => $values[2],
