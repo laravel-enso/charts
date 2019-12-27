@@ -2,6 +2,9 @@
 
 namespace LaravelEnso\Charts\app\Factories;
 
+use Illuminate\Support\Collection;
+use LaravelEnso\Charts\App\Enums\Charts;
+
 class Line extends Chart
 {
     private $fill;
@@ -12,7 +15,7 @@ class Line extends Chart
 
         $this->fill = false;
 
-        $this->type('line')
+        $this->type(Charts::Line)
             ->ratio(1.6)
             ->scales();
     }
@@ -39,20 +42,17 @@ class Line extends Chart
 
     protected function build()
     {
-        collect($this->datasets)->each(function ($dataset, $label) {
-            $color = $this->color();
-
-            $this->data[] = [
+        (new Collection($this->datasets))
+            ->each(fn ($dataset, $label) => $this->data[] = [
                 'fill' => $this->fill,
                 'lineTension' => 0.3,
                 'pointHoverRadius' => 5,
                 'pointHitRadius' => 5,
                 'label' => $label,
-                'borderColor' => $color,
-                'backgroundColor' => $this->hex2rgba($color),
+                'borderColor' => $this->color(),
+                'backgroundColor' => $this->hex2rgba($this->color()),
                 'data' => $dataset,
-                'datalabels' => ['backgroundColor' => $color],
-            ];
-        });
+                'datalabels' => ['backgroundColor' => $this->color()],
+            ]);
     }
 }

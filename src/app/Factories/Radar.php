@@ -2,13 +2,16 @@
 
 namespace LaravelEnso\Charts\app\Factories;
 
+use Illuminate\Support\Collection;
+use LaravelEnso\Charts\App\Enums\Charts;
+
 class Radar extends Chart
 {
     public function __construct()
     {
         parent::__construct();
 
-        $this->type('radar')
+        $this->type(Charts::Radar)
             ->ratio(1);
     }
 
@@ -27,17 +30,14 @@ class Radar extends Chart
 
     protected function build()
     {
-        collect($this->datasets)->each(function ($dataset, $label) {
-            $color = $this->color();
-
-            $this->data[] = [
+        (new Collection($this->datasets))
+            ->each(fn ($dataset, $label) => $this->data[] = [
                 'label' => $label,
-                'borderColor' => $color,
-                'backgroundColor' => $this->hex2rgba($color),
+                'borderColor' => $this->color(),
+                'backgroundColor' => $this->hex2rgba($this->color()),
                 'pointBorderColor' => '#fff',
                 'data' => $dataset,
-                'datalabels' => ['backgroundColor' => $color],
-            ];
-        });
+                'datalabels' => ['backgroundColor' => $this->color()],
+            ]);
     }
 }

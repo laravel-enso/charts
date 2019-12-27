@@ -3,7 +3,9 @@
     "description": "Server-side data builder for Chart.js, with a VueJS component for the frontend.",
     "keywords": [
         "laravel-enso",
-        "charts"
+        "charts",
+        "laravel",
+        "chartjs"
     ],
     "homepage": "https://github.com/laravel-enso/charts",
     "type": "library",
@@ -18,7 +20,8 @@
     ],
     "require": {
         "laravel/framework": "^6.0",
-        "laravel-enso/helpers": "1.14.*"
+        "laravel-enso/helpers": "1.14.*",
+        "php": ">=7.4.0"
     },
     "autoload": {
         "psr-4": {

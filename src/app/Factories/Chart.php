@@ -4,14 +4,13 @@ namespace LaravelEnso\Charts\app\Factories;
 
 abstract class Chart
 {
-    protected $datasets;
-    protected $labels;
-    protected $colors;
-    protected $data;
-    protected $title;
-    protected $type;
-    protected $options;
-    protected $scales;
+    protected array $datasets;
+    protected array $labels;
+    protected array $colors;
+    protected array $data;
+    protected string $title;
+    protected string $type;
+    protected array $options;
 
     public function __construct()
     {
@@ -76,26 +75,30 @@ abstract class Chart
     protected function hex2rgba($color)
     {
         $color = substr($color, 1);
-        $hex = [$color[0].$color[1], $color[2].$color[3], $color[4].$color[5]];
-        $rgb = array_map('hexdec', $hex);
 
-        return 'rgba('.implode(',', $rgb).','.config('enso.charts.fillBackgroundOpacity').')';
+        $hex = [
+            "{$color[0]}{$color[1]}",
+            "{$color[2]}{$color[3]}",
+            "{$color[4]}{$color[5]}",
+        ];
+
+        $rgb = array_map('hexdec', $hex);
+        $rgba = implode(',', $rgb);
+        $opacity = config('enso.charts.fillBackgroundOpacity');
+
+        return "rgba({$rgba},$opacity)";
     }
 
     protected function color($index = null)
     {
-        $index = $index ?? count($this->data);
+        $index ??= count($this->data);
 
         return $this->colors[$index];
     }
 
     protected function colors()
     {
-        if (! $this->colors) {
-            $this->colors = array_values(config('enso.charts.colors'));
-        }
-
-        return $this->colors;
+        return $this->colors = array_values(config('enso.charts.colors'));
     }
 
     protected function scales()

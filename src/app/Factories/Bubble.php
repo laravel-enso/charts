@@ -2,10 +2,14 @@
 
 namespace LaravelEnso\Charts\app\Factories;
 
+use Illuminate\Support\Collection;
+use LaravelEnso\Charts\App\Enums\Charts;
+use LaravelEnso\Helpers\app\Classes\Decimals;
+
 class Bubble extends Chart
 {
-    private $radiusLimit;
-    private $maxRadius;
+    private int $radiusLimit;
+    private int $maxRadius;
 
     public function __construct()
     {
@@ -13,7 +17,7 @@ class Bubble extends Chart
 
         $this->radiusLimit = 25;
 
-        $this->type('bubble')
+        $this->type(Charts::Bubble)
             ->ratio(1.6)
             ->scales();
     }
@@ -38,24 +42,30 @@ class Bubble extends Chart
 
     private function maxRadius()
     {
-        $this->maxRadius = collect($this->datasets)->map(function ($dataset) {
-            return max(array_column($dataset, 2));
-        })->max();
+        $this->maxRadius = (new Collection($this->datasets))
+            ->map(fn ($dataset) => max(array_column($dataset, 2)))
+            ->max();
 
         return $this;
     }
 
     private function computeRadius()
     {
-        $this->datasets = collect($this->datasets)->map(function ($dataset) {
-            return collect($dataset)->map(function ($bubble) {
-                $bubble[2] = round($this->radiusLimit * $bubble[2] / $this->maxRadius, 2);
-
-                return $bubble;
-            });
-        })->toArray();
+        $this->datasets = (new Collection($this->datasets))
+            ->map(fn ($dataset) => (new Collection($dataset))
+                ->map(fn ($bubble) => $this->bubbleRadius($bubble))
+            )->toArray();
 
         return $this;
+    }
+
+    private function bubbleRadius(array $bubble)
+    {
+        $bubble[2] = Decimals::ceil(
+            Decimals::div($this->radiusLimit * $bubble[2], $this->maxRadius)
+        );
+
+        return $bubble;
     }
 
     private function mapDatasetsLabels()
@@ -70,30 +80,26 @@ class Bubble extends Chart
 
     private function data()
     {
-        collect($this->datasets)->each(function ($dataset, $label) {
-            $color = $this->color();
-
-            $this->data[] = [
+        (new Collection($this->datasets))
+            ->each(fn ($dataset, $label) => $this->data[] = [
                 'label' => $label,
-                'borderColor' => $color,
-                'backgroundColor' => $this->hex2rgba($color),
-                'hoverBackgroundColor' => $this->hex2rgba($color, 0.6),
+                'borderColor' => $this->color(),
+                'backgroundColor' => $this->hex2rgba($this->color()),
+                'hoverBackgroundColor' => $this->hex2rgba($this->color(), 0.6),
                 'data' => $this->dataset($dataset),
                 'datalabels' => [
-                    'backgroundColor' => $color,
+                    'backgroundColor' => $this->color(),
                 ],
-            ];
-        });
+            ]);
     }
 
     private function dataset($dataset)
     {
-        return collect($dataset)->map(function ($values) {
-            return [
+        return (new Collection($dataset))
+            ->map(fn ($values) => [
                 'x' => $values[0],
                 'y' => $values[1],
                 'r' => $values[2],
-            ];
-        });
+            ]);
     }
 }

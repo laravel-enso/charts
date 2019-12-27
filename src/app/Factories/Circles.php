@@ -2,6 +2,8 @@
 
 namespace LaravelEnso\Charts\app\Factories;
 
+use Illuminate\Support\Collection;
+
 abstract class Circles extends Chart
 {
     public function response()
@@ -19,26 +21,25 @@ abstract class Circles extends Chart
 
     protected function build()
     {
-        $this->colors = collect($this->colors())
+        $colors = (new Collection($this->colors()))
             ->slice(0, count($this->labels));
 
         $this->data = is_array($this->datasets[0])
-            ? $this->stackedDatasets()
+            ? $this->stackedDatasets($colors)
             : [[
                 'data' => $this->datasets,
-                'backgroundColor' => $this->colors,
-                'datalabels' => ['backgroundColor' => $this->colors],
+                'backgroundColor' => $colors,
+                'datalabels' => ['backgroundColor' => $colors],
             ]];
     }
 
-    private function stackedDatasets()
+    private function stackedDatasets($colors)
     {
-        return collect($this->datasets)->map(function ($dataset) {
-            return [
+        return (new Collection($this->datasets))
+            ->map(fn ($dataset) => [
                 'data' => $dataset,
-                'backgroundColor' => $this->colors,
-                'datalabels' => ['backgroundColor' => $this->colors],
-            ];
-        });
+                'backgroundColor' => $colors,
+                'datalabels' => ['backgroundColor' => $colors],
+            ]);
     }
 }

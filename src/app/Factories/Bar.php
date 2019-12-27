@@ -2,6 +2,8 @@
 
 namespace LaravelEnso\Charts\app\Factories;
 
+use Illuminate\Support\Collection;
+
 class Bar extends Chart
 {
     public function __construct()
@@ -45,13 +47,12 @@ class Bar extends Chart
 
     protected function build()
     {
-        collect($this->datasets)->each(function ($dataset, $label) {
-            $this->data[] = [
+        (new Collection($this->datasets))
+            ->each(fn ($dataset, $label) => $this->data[] = [
                 'label' => $label,
                 'backgroundColor' => $this->color(),
                 'data' => $dataset,
                 'datalabels' => ['backgroundColor' => $this->color()],
-            ];
-        });
+            ]);
     }
 }
