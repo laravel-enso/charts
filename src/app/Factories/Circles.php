@@ -33,12 +33,10 @@ abstract class Circles extends Chart
 
     private function stackedDatasets()
     {
-        return collect($this->datasets)->map(function ($dataset) {
-            return [
-                'data' => $dataset,
-                'backgroundColor' => $this->colors,
-                'datalabels' => ['backgroundColor' => $this->colors],
-            ];
-        });
+        return collect($this->datasets)->map(fn($dataset) => [
+            'data' => $dataset,
+            'backgroundColor' => $this->colors,
+            'datalabels' => ['backgroundColor' => $this->colors],
+        ]);
     }
 }
