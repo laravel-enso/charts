@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\Charts\app\Factories;
+namespace LaravelEnso\Charts\App\Factories;
 
 use Illuminate\Support\Collection;
 use LaravelEnso\Charts\App\Enums\Charts;
-use LaravelEnso\Helpers\app\Classes\Decimals;
+use LaravelEnso\Helpers\App\Classes\Decimals;
 
 class Bubble extends Chart
 {

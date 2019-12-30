@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Charts\app\Factories;
+namespace LaravelEnso\Charts\App\Factories;
 
 use Illuminate\Support\Collection;
 use LaravelEnso\Charts\App\Enums\Charts;
