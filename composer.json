@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "laravel/framework": "^6.0",
+        "laravel/framework": "^7.0",
         "laravel-enso/helpers": "1.15.*",
         "php": ">=7.4.0"
     },
