@@ -109,9 +109,9 @@ abstract class Chart
                     'autoSkip' => false,
                     'maxRotation' => 90,
                 ],
-                'gridLines' => ['display' => false],
+                'gridLines' => ['drawOnChartArea' => false],
             ]],
-            'yAxes' => [['gridLines' => ['display' => false]]],
+            'yAxes' => [['gridLines' => ['drawOnChartArea' => false]]],
         ];
     }
 }
