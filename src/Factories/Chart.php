@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Charts\App\Factories;
+namespace LaravelEnso\Charts\Factories;
 
 abstract class Chart
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\Charts\App\Factories;
+namespace LaravelEnso\Charts\Factories;
 
-use LaravelEnso\Charts\App\Enums\Charts;
+use LaravelEnso\Charts\Enums\Charts;
 
 class Pie extends Circles
 {
