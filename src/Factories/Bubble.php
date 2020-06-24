@@ -4,7 +4,7 @@ namespace LaravelEnso\Charts\Factories;
 
 use Illuminate\Support\Collection;
 use LaravelEnso\Charts\Enums\Charts;
-use LaravelEnso\Helpers\Classes\Decimals;
+use LaravelEnso\Helpers\Services\Decimals;
 
 class Bubble extends Chart
 {
