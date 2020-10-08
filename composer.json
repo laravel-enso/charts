@@ -17,7 +17,7 @@
         "role": "Developer"
     }],
     "require": {
-        "laravel/framework": "^7.0",
+        "laravel/framework": "^7.0|^8.0",
         "laravel-enso/helpers": "^2.0",
         "php": ">=7.4.0"
     },
