@@ -18,8 +18,7 @@ class Bubble extends Chart
         $this->radiusLimit = 25;
 
         $this->type(Charts::Bubble)
-            ->ratio(1.6)
-            ->scales();
+            ->ratio(1.6);
     }
 
     public function response()
@@ -53,8 +52,8 @@ class Bubble extends Chart
     {
         $this->datasets = (new Collection($this->datasets))
             ->map(fn ($dataset) => (new Collection($dataset))
-                ->map(fn ($bubble) => $this->bubbleRadius($bubble))
-            )->toArray();
+                ->map(fn ($bubble) => $this->bubbleRadius($bubble)))
+            ->toArray();
 
         return $this;
     }

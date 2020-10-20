@@ -11,18 +11,17 @@ class Bar extends Chart
         parent::__construct();
 
         $this->type('bar')
-            ->ratio(1.6)
-            ->scales();
+            ->ratio(1.6);
     }
 
-    public function horizontal()
+    public function horizontal(): self
     {
         $this->type('horizontalBar');
 
         return $this;
     }
 
-    public function stackedScales()
+    public function stackedScales(): self
     {
         $this->options['scales'] = [
             'xAxes' => [['stacked' => true]],
@@ -32,7 +31,7 @@ class Bar extends Chart
         return $this;
     }
 
-    protected function response()
+    protected function response(): array
     {
         return [
             'data' => [
@@ -45,14 +44,16 @@ class Bar extends Chart
         ];
     }
 
-    protected function build()
+    protected function build(): void
     {
         (new Collection($this->datasets))
             ->each(fn ($dataset, $label) => $this->data[] = [
                 'label' => $label,
                 'backgroundColor' => $this->color(),
                 'data' => $dataset,
-                'datalabels' => ['backgroundColor' => $this->color()],
+                'datalabels' => [
+                    'backgroundColor' => $this->color(),
+                ],
             ]);
     }
 }

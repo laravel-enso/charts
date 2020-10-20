@@ -16,8 +16,7 @@ class Line extends Chart
         $this->fill = false;
 
         $this->type(Charts::Line)
-            ->ratio(1.6)
-            ->scales();
+            ->ratio(1.6);
     }
 
     public function response()
