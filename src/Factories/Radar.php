@@ -15,7 +15,7 @@ class Radar extends Chart
             ->ratio(1);
     }
 
-    public function response()
+    public function response(): array
     {
         return [
             'data' => [
@@ -28,7 +28,7 @@ class Radar extends Chart
         ];
     }
 
-    protected function build()
+    protected function build(): void
     {
         (new Collection($this->datasets))
             ->each(fn ($dataset, $label) => $this->data[] = [
