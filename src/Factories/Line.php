@@ -19,7 +19,7 @@ class Line extends Chart
             ->ratio(1.6);
     }
 
-    public function response()
+    public function response(): array
     {
         return [
             'data' => [
@@ -32,14 +32,14 @@ class Line extends Chart
         ];
     }
 
-    public function fill()
+    public function fill(): self
     {
         $this->fill = true;
 
         return $this;
     }
 
-    protected function build()
+    protected function build(): void
     {
         (new Collection($this->datasets))
             ->each(fn ($dataset, $label) => $this->data[] = [

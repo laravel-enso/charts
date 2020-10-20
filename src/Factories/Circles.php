@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 
 abstract class Circles extends Chart
 {
-    public function response()
+    public function response(): array
     {
         return [
             'data' => [
@@ -19,7 +19,7 @@ abstract class Circles extends Chart
         ];
     }
 
-    protected function build()
+    protected function build(): void
     {
         $colors = (new Collection($this->colors()))
             ->slice(0, count($this->labels));
@@ -33,7 +33,7 @@ abstract class Circles extends Chart
             ]];
     }
 
-    private function stackedDatasets($colors)
+    private function stackedDatasets(Collection $colors): Collection
     {
         return (new Collection($this->datasets))
             ->map(fn ($dataset) => [

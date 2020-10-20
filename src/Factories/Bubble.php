@@ -21,7 +21,7 @@ class Bubble extends Chart
             ->ratio(1.6);
     }
 
-    public function response()
+    public function response(): array
     {
         return [
             'data' => ['datasets' => $this->data],
@@ -31,7 +31,7 @@ class Bubble extends Chart
         ];
     }
 
-    protected function build()
+    protected function build(): void
     {
         $this->maxRadius()
             ->computeRadius()
@@ -39,7 +39,7 @@ class Bubble extends Chart
             ->data();
     }
 
-    private function maxRadius()
+    private function maxRadius(): self
     {
         $this->maxRadius = (new Collection($this->datasets))
             ->map(fn ($dataset) => max(array_column($dataset, 2)))
@@ -48,7 +48,7 @@ class Bubble extends Chart
         return $this;
     }
 
-    private function computeRadius()
+    private function computeRadius(): self
     {
         $this->datasets = (new Collection($this->datasets))
             ->map(fn ($dataset) => (new Collection($dataset))
@@ -58,7 +58,7 @@ class Bubble extends Chart
         return $this;
     }
 
-    private function bubbleRadius(array $bubble)
+    private function bubbleRadius(array $bubble): array
     {
         $bubble[2] = Decimals::ceil(
             Decimals::div($this->radiusLimit * $bubble[2], $this->maxRadius)
@@ -67,7 +67,7 @@ class Bubble extends Chart
         return $bubble;
     }
 
-    private function mapDatasetsLabels()
+    private function mapDatasetsLabels(): self
     {
         $this->datasets = array_combine(
             array_values($this->labels),
@@ -77,7 +77,7 @@ class Bubble extends Chart
         return $this;
     }
 
-    private function data()
+    private function data(): void
     {
         (new Collection($this->datasets))
             ->each(fn ($dataset, $label) => $this->data[] = [
@@ -92,7 +92,7 @@ class Bubble extends Chart
             ]);
     }
 
-    private function dataset($dataset)
+    private function dataset($dataset): Collection
     {
         return (new Collection($dataset))
             ->map(fn ($values) => [

@@ -27,7 +27,7 @@ abstract class Chart
         $this->colors();
     }
 
-    public function get()
+    public function get(): array
     {
         $this->scales()->build();
 
@@ -36,74 +36,74 @@ abstract class Chart
         return $this->response();
     }
 
-    public function datasetConfig(string $dataset, array $config)
+    public function datasetConfig(string $dataset, array $config): self
     {
         $this->datasetConfig[$dataset] = $config;
 
         return $this;
     }
 
-    public function xAxisConfig(string $dataset, array $config)
+    public function xAxisConfig(string $dataset, array $config): self
     {
         $this->axes['x'][$dataset] = $config;
 
         return $this;
     }
 
-    public function yAxisConfig(string $dataset, array $config)
+    public function yAxisConfig(string $dataset, array $config): self
     {
         $this->axes['y'][$dataset] = $config;
 
         return $this;
     }
 
-    public function title(string $title)
+    public function title(string $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function labels(array $labels)
+    public function labels(array $labels): self
     {
         $this->labels = $labels;
 
         return $this;
     }
 
-    public function datasets(array $datasets)
+    public function datasets(array $datasets): self
     {
         $this->datasets = $datasets;
 
         return $this;
     }
 
-    public function ratio(float $ratio)
+    public function ratio(float $ratio): self
     {
         $this->options['aspectRatio'] = $ratio;
 
         return $this;
     }
 
-    public function option(string $option, $value)
+    public function option(string $option, $value): self
     {
         $this->options[$option] = $value;
 
         return $this;
     }
 
-    abstract protected function build();
+    abstract protected function build(): void;
 
-    abstract protected function response();
+    abstract protected function response(): array;
 
-    protected function type(string $type)
+    protected function type(string $type): self
     {
         $this->type = $type;
 
         return $this;
     }
 
-    protected function hex2rgba(string $color)
+    protected function hex2rgba(string $color): string
     {
         $color = substr($color, 1);
 
@@ -120,19 +120,19 @@ abstract class Chart
         return "rgba({$rgba},{$opacity})";
     }
 
-    protected function color(?int $index = null)
+    protected function color(?string $index = null): string
     {
         $index ??= count($this->data);
 
         return $this->colors[$index];
     }
 
-    protected function colors()
+    protected function colors(): array
     {
-        return $this->colors = array_values(Config::get('enso.charts.colors'));
+        return $this->colors ??= array_values(Config::get('enso.charts.colors'));
     }
 
-    protected function scales()
+    protected function scales(): self
     {
         $this->options['scales'] = [
             'xAxes' => $this->xAxes(),
@@ -151,7 +151,7 @@ abstract class Chart
         return $this;
     }
 
-    private function xAxes()
+    private function xAxes(): array
     {
         return $this->mergeAxisConfig('x', [
             'ticks' => [
@@ -162,12 +162,12 @@ abstract class Chart
         ]);
     }
 
-    private function yAxes()
+    private function yAxes(): array
     {
         return $this->mergeAxisConfig('y', ['gridLines' => ['drawOnChartArea' => false]]);
     }
 
-    private function mergeAxisConfig(string $axis, array $defaultConfig)
+    private function mergeAxisConfig(string $axis, array $defaultConfig): array
     {
         return empty($this->axes[$axis])
             ? [$defaultConfig]
@@ -177,7 +177,7 @@ abstract class Chart
             ->values()->toArray();
     }
 
-    private function customize()
+    private function customize(): void
     {
         foreach ($this->datasetConfig as $label => $config) {
             $index = Collection::wrap($this->data)
