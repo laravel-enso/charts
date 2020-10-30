@@ -51,9 +51,9 @@ class Bar extends Chart
                 'label' => $label,
                 'backgroundColor' => $this->color(),
                 'data' => $dataset,
-                'datalabels' => [
+                'datalabels' => empty($this->datalabels) ? [
                     'backgroundColor' => $this->color(),
-                ],
+                ] : $this->datalabels,
             ]);
     }
 }

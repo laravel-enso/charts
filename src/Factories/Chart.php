@@ -16,6 +16,7 @@ abstract class Chart
     protected array $colors;
     protected string $title;
     protected string $type;
+    protected array $datalabels;
 
     public function __construct()
     {
@@ -23,6 +24,8 @@ abstract class Chart
         $this->data = [];
         $this->datasetConfig = [];
         $this->options = [];
+        $this->labels = [];
+        $this->datalabels = [];
 
         $this->colors();
     }
@@ -36,6 +39,13 @@ abstract class Chart
         return $this->response();
     }
 
+    public function datalabels(array $config): self
+    {
+        $this->datalabels = $config;
+
+        return $this;
+    }
+
     public function datasetConfig(string $dataset, array $config): self
     {
         $this->datasetConfig[$dataset] = $config;
@@ -43,9 +53,13 @@ abstract class Chart
         return $this;
     }
 
-    public function xAxisConfig(string $dataset, array $config): self
+    public function xAxisConfig(array $config, ?string $dataset = null): self
     {
-        $this->axes['x'][$dataset] = $config;
+        if ($dataset) {
+            $this->axes['x'][$dataset] = $config;
+        } else {
+            $this->axes['x'][] = $config;
+        }
 
         return $this;
     }

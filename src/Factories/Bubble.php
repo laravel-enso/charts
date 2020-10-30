@@ -5,9 +5,13 @@ namespace LaravelEnso\Charts\Factories;
 use Illuminate\Support\Collection;
 use LaravelEnso\Charts\Enums\Charts;
 use LaravelEnso\Helpers\Services\Decimals;
+use LaravelEnso\Helpers\Traits\When;
 
 class Bubble extends Chart
 {
+    use When;
+
+    private bool $autoRadius;
     private int $radiusLimit;
     private int $maxRadius;
 
@@ -15,6 +19,7 @@ class Bubble extends Chart
     {
         parent::__construct();
 
+        $this->autoRadius = true;
         $this->radiusLimit = 25;
 
         $this->type(Charts::Bubble)
@@ -31,10 +36,18 @@ class Bubble extends Chart
         ];
     }
 
+    public function disableAutoRadius(): self
+    {
+        $this->autoRadius = false;
+
+        return $this;
+    }
+
     protected function build(): void
     {
-        $this->maxRadius()
-            ->computeRadius()
+        $this->when($this->autoRadius, fn ($chart) => $chart
+            ->maxRadius()
+            ->computeRadius())
             ->mapDatasetsLabels()
             ->data();
     }
@@ -86,9 +99,9 @@ class Bubble extends Chart
                 'backgroundColor' => $this->hex2rgba($this->color()),
                 'hoverBackgroundColor' => $this->hex2rgba($this->color(), 0.6),
                 'data' => $this->dataset($dataset),
-                'datalabels' => [
+                'datalabels' => empty($this->datalabels) ? [
                     'backgroundColor' => $this->color(),
-                ],
+                ] : $this->datalabels,
             ]);
     }
 

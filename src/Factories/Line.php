@@ -51,7 +51,9 @@ class Line extends Chart
                 'borderColor' => $this->color(),
                 'backgroundColor' => $this->hex2rgba($this->color()),
                 'data' => $dataset,
-                'datalabels' => ['backgroundColor' => $this->color()],
+                'datalabels' => empty($this->datalabels) ? [
+                    'backgroundColor' => $this->color(),
+                ] : $this->datalabels,
             ]);
     }
 }

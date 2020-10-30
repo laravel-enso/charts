@@ -37,7 +37,9 @@ class Radar extends Chart
                 'backgroundColor' => $this->hex2rgba($this->color()),
                 'pointBorderColor' => '#fff',
                 'data' => $dataset,
-                'datalabels' => ['backgroundColor' => $this->color()],
+                'datalabels' => empty($this->datalabels) ? [
+                    'backgroundColor' => $this->color(),
+                ] : $this->datalabels,
             ]);
     }
 }

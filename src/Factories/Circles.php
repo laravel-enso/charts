@@ -39,7 +39,9 @@ abstract class Circles extends Chart
             ->map(fn ($dataset) => [
                 'data' => $dataset,
                 'backgroundColor' => $colors,
-                'datalabels' => ['backgroundColor' => $colors],
+                'datalabels' => empty($this->datalabels) ? [
+                    'backgroundColor' => $colors,
+                ] : $this->datalabels,
             ]);
     }
 }
