@@ -17,6 +17,7 @@ abstract class Chart
     protected string $title;
     protected string $type;
     protected array $datalabels;
+    private bool $gridlines;
 
     public function __construct()
     {
@@ -26,6 +27,7 @@ abstract class Chart
         $this->options = [];
         $this->labels = [];
         $this->datalabels = [];
+        $this->gridlines = false;
 
         $this->colors();
     }
@@ -37,6 +39,13 @@ abstract class Chart
         $this->customize();
 
         return $this->response();
+    }
+
+    public function gridlines(): self
+    {
+        $this->gridlines = true;
+
+        return $this;
     }
 
     public function datalabels(array $config): self
@@ -172,13 +181,15 @@ abstract class Chart
                 'autoSkip' => false,
                 'maxRotation' => 90,
             ],
-            'gridLines' => ['drawOnChartArea' => false],
+            'gridLines' => ['drawOnChartArea' => $this->gridlines],
         ]);
     }
 
     private function yAxes(): array
     {
-        return $this->mergeAxisConfig('y', ['gridLines' => ['drawOnChartArea' => false]]);
+        return $this->mergeAxisConfig('y', [
+            'gridLines' => ['drawOnChartArea' => $this->gridlines],
+        ]);
     }
 
     private function mergeAxisConfig(string $axis, array $defaultConfig): array
