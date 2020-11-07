@@ -18,6 +18,7 @@ abstract class Chart
     protected string $type;
     protected array $datalabels;
     private bool $gridlines;
+    private bool $autoYMin;
 
     public function __construct()
     {
@@ -28,6 +29,7 @@ abstract class Chart
         $this->labels = [];
         $this->datalabels = [];
         $this->gridlines = false;
+        $this->autoYMin = false;
 
         $this->colors();
     }
@@ -39,6 +41,13 @@ abstract class Chart
         $this->customize();
 
         return $this->response();
+    }
+
+    public function autoYMin(): self
+    {
+        $this->autoYMin = true;
+
+        return $this;
     }
 
     public function gridlines(): self
@@ -187,9 +196,13 @@ abstract class Chart
 
     private function yAxes(): array
     {
-        return $this->mergeAxisConfig('y', [
-            'gridLines' => ['drawOnChartArea' => $this->gridlines],
-        ]);
+        $y = ['gridLines' => ['drawOnChartArea' => $this->gridlines]];
+
+        if (! $this->autoYMin) {
+            $y['ticks']['min'] = 0;
+        }
+
+        return $this->mergeAxisConfig('y', $y);
     }
 
     private function mergeAxisConfig(string $axis, array $defaultConfig): array
