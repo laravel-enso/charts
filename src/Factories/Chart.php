@@ -64,6 +64,13 @@ abstract class Chart
         return $this;
     }
 
+    public function colorsConfig(array $colors): self
+    {
+        $this->colors = $colors;
+
+        return $this;
+    }
+
     public function datasetConfig(string $dataset, array $config): self
     {
         $this->datasetConfig[$dataset] = $config;
