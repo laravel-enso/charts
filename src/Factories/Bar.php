@@ -23,10 +23,8 @@ class Bar extends Chart
 
     public function stackedScales(): self
     {
-        $this->options['scales'] = [
-            'xAxes' => [['stacked' => true]],
-            'yAxes' => [['stacked' => true]],
-        ];
+        $this->xAxisConfig(['stacked' => true])
+            ->yAxisConfig(['stacked' => true]);
 
         return $this;
     }
