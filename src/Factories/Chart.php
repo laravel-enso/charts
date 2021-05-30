@@ -89,9 +89,13 @@ abstract class Chart
         return $this;
     }
 
-    public function yAxisConfig(string $dataset, array $config): self
+    public function yAxisConfig(array $config, ?string $dataset = null): self
     {
-        $this->axes['y'][$dataset] = $config;
+        if ($dataset) {
+            $this->axes['y'][$dataset] = $config;
+        } else {
+            $this->axes['y'][] = $config;
+        }
 
         return $this;
     }
