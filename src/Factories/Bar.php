@@ -44,7 +44,7 @@ class Bar extends Chart
 
     protected function build(): void
     {
-        (new Collection($this->datasets))
+        Collection::wrap($this->datasets)
             ->each(fn ($dataset, $label) => $this->data[] = [
                 'label' => $label,
                 'backgroundColor' => $this->color(),

@@ -41,7 +41,7 @@ class Line extends Chart
 
     protected function build(): void
     {
-        (new Collection($this->datasets))
+        Collection::wrap($this->datasets)
             ->each(fn ($dataset, $label) => $this->data[] = [
                 'fill' => $this->fill,
                 'lineTension' => 0.3,

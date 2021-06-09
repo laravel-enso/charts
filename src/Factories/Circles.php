@@ -21,7 +21,7 @@ abstract class Circles extends Chart
 
     protected function build(): void
     {
-        $colors = (new Collection($this->colors()))
+        $colors = Collection::wrap($this->colors())
             ->slice(0, count($this->labels));
 
         $this->data = is_array($this->datasets[0])
@@ -35,7 +35,7 @@ abstract class Circles extends Chart
 
     private function stackedDatasets(Collection $colors): Collection
     {
-        return (new Collection($this->datasets))
+        return Collection::wrap($this->datasets)
             ->map(fn ($dataset) => [
                 'data' => $dataset,
                 'backgroundColor' => $colors,

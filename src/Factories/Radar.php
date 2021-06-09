@@ -30,7 +30,7 @@ class Radar extends Chart
 
     protected function build(): void
     {
-        (new Collection($this->datasets))
+        Collection::wrap($this->datasets)
             ->each(fn ($dataset, $label) => $this->data[] = [
                 'label' => $label,
                 'borderColor' => $this->color(),
