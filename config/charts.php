@@ -3,16 +3,16 @@
 return [
     'fillBackgroundOpacity' => 0.25,
     'options' => [
-        'tooltip' =>  false,
-        'plugins' =>  [
-            'datalabels' =>  [
-                'anchor' =>  'end',
-                'align' =>  'top',
-                'borderRadius' =>  3,
-                'padding' =>  2,
-                'color' =>  'white',
-                'font' =>  [
-                    'weight' =>  'bold',
+        'tooltip' => false,
+        'plugins' => [
+            'datalabels' => [
+                'anchor' => 'end',
+                'align' => 'top',
+                'borderRadius' => 3,
+                'padding' => 2,
+                'color' => 'white',
+                'font' => [
+                    'weight' => 'bold',
                 ],
             ],
         ],
