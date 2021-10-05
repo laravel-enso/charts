@@ -22,10 +22,10 @@ abstract class Chart
 
     public function __construct()
     {
-        $this->axes = ['x' => [], 'y' => []];
+        $this->axes = ['xAxes' => ['x' => []], 'yAxes' => ['y' => []]];
         $this->data = [];
         $this->datasetConfig = [];
-        $this->options = [];
+        $this->options = Config::get('enso.charts.options');
         $this->labels = [];
         $this->datalabels = [];
         $this->gridlines = false;
@@ -78,24 +78,16 @@ abstract class Chart
         return $this;
     }
 
-    public function xAxisConfig(array $config, ?string $dataset = null): self
+    public function xAxisConfig(array $config, ?string $dataset = 'x'): self
     {
-        if ($dataset) {
-            $this->axes['x'][$dataset] = $config;
-        } else {
-            $this->axes['x'][] = $config;
-        }
+        $this->axes['xAxes'][$dataset] = $config;
 
         return $this;
     }
 
-    public function yAxisConfig(array $config, ?string $dataset = null): self
+    public function yAxisConfig(array $config, ?string $dataset = 'y'): self
     {
-        if ($dataset) {
-            $this->axes['y'][$dataset] = $config;
-        } else {
-            $this->axes['y'][] = $config;
-        }
+        $this->axes['yAxes'][$dataset] = $config;
 
         return $this;
     }
@@ -131,6 +123,13 @@ abstract class Chart
     public function option(string $option, $value): self
     {
         $this->options[$option] = $value;
+
+        return $this;
+    }
+
+    public function plugin(string $plugin, $config)
+    {
+        $this->options['plugins'][$plugin] = $config;
 
         return $this;
     }
@@ -177,53 +176,42 @@ abstract class Chart
 
     protected function scales(): self
     {
-        $this->options['scales'] = [
-            'xAxes' => $this->xAxes(),
-            'yAxes' => $this->yAxes(),
-        ];
-
-        foreach (array_keys($this->datasetConfig) as $label) {
-            if (isset($this->axes['x'][$label]['id'])) {
-                $this->datasetConfig[$label]['xAxisID'] = $this->axes['x'][$label]['id'];
-            }
-            if (isset($this->axes['y'][$label]['id'])) {
-                $this->datasetConfig[$label]['yAxisID'] = $this->axes['y'][$label]['id'];
-            }
+        foreach ($this->axes['xAxes'] as $axis => $config) {
+            $this->options['scales'][$axis] = array_merge_recursive(
+                $config,
+                $this->defaultXConfig()
+            );
+        }
+        foreach ($this->axes['yAxes'] as $axis => $config) {
+            $this->options['scales'][$axis] = array_merge_recursive(
+                $config,
+                $this->defaultYConfig()
+            );
         }
 
         return $this;
     }
 
-    private function xAxes(): array
+    private function defaultXConfig(): array
     {
-        return $this->mergeAxisConfig('x', [
+        return  [
             'ticks' => [
                 'autoSkip' => false,
                 'maxRotation' => 90,
             ],
-            'gridLines' => ['drawOnChartArea' => $this->gridlines],
-        ]);
+            'grid' => ['drawOnChartArea' => $this->gridlines],
+        ];
     }
 
-    private function yAxes(): array
+    private function defaultYConfig(): array
     {
-        $y = ['gridLines' => ['drawOnChartArea' => $this->gridlines]];
+        $config = ['grid' => ['drawOnChartArea' => $this->gridlines]];
 
         if (! $this->autoYMin) {
-            $y['ticks']['min'] = 0;
+            $config['ticks']['min'] = 0;
         }
 
-        return $this->mergeAxisConfig('y', $y);
-    }
-
-    private function mergeAxisConfig(string $axis, array $defaultConfig): array
-    {
-        return empty($this->axes[$axis])
-            ? [$defaultConfig]
-            : Collection::wrap($this->axes[$axis])
-            ->map(fn ($customConfig) => Collection::wrap($defaultConfig)
-                ->merge($customConfig))
-            ->values()->toArray();
+        return $config;
     }
 
     private function customize(): void
