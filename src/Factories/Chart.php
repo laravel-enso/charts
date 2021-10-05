@@ -78,24 +78,16 @@ abstract class Chart
         return $this;
     }
 
-    public function xAxisConfig(array $config, ?string $dataset = null): self
+    public function xAxisConfig(array $config, ?string $dataset = 'x'): self
     {
-        if ($dataset) {
-            $this->axes['xAxes'][$dataset] = $config;
-        } else {
-            $this->axes['xAxes']['x'] = $config;
-        }
+        $this->axes['xAxes'][$dataset] = $config;
 
         return $this;
     }
 
-    public function yAxisConfig(array $config, ?string $dataset = null): self
+    public function yAxisConfig(array $config, ?string $dataset = 'y'): self
     {
-        if ($dataset) {
-            $this->axes['yAxes'][$dataset] = $config;
-        } else {
-            $this->axes['yAxes']['y'] = $config;
-        }
+        $this->axes['yAxes'][$dataset] = $config;
 
         return $this;
     }
