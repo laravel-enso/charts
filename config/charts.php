@@ -3,7 +3,6 @@
 return [
     'fillBackgroundOpacity' => 0.25,
     'options' => [
-        'tooltip' => false,
         'plugins' => [
             'datalabels' => [
                 'anchor' => 'end',
@@ -14,6 +13,9 @@ return [
                 'font' => [
                     'weight' => 'bold',
                 ],
+            ],
+            'tooltip' => [
+                'enabled' => false,
             ],
         ],
     ],
