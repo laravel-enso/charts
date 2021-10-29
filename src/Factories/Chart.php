@@ -134,6 +134,14 @@ abstract class Chart
         return $this;
     }
 
+    public function shortNumbers(int $precision = 2): self
+    {
+        $this->option('shortNumbers', true)
+            ->option('precision', $precision);
+
+        return $this;
+    }
+
     abstract protected function build(): void;
 
     abstract protected function response(): array;
