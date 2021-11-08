@@ -16,7 +16,7 @@ class Bar extends Chart
 
     public function horizontal(): self
     {
-        $this->type('horizontalBar');
+        $this->option('indexAxis', 'y');
 
         return $this;
     }
