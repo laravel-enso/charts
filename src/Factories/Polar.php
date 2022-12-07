@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\Charts\Factories;
 
-use LaravelEnso\Charts\Enums\Charts;
+use LaravelEnso\Charts\Enums\Type;
 
 class Polar extends Circles
 {
@@ -10,7 +10,7 @@ class Polar extends Circles
     {
         parent::__construct();
 
-        $this->type(Charts::PolarArea)
+        $this->type(Type::PolarArea)
             ->ratio(1);
     }
 }

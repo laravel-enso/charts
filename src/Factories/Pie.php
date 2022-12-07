@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\Charts\Factories;
 
-use LaravelEnso\Charts\Enums\Charts;
+use LaravelEnso\Charts\Enums\Type;
 
 class Pie extends Circles
 {
@@ -10,7 +10,7 @@ class Pie extends Circles
     {
         parent::__construct();
 
-        $this->type(Charts::Pie)
+        $this->type(Type::Pie)
             ->ratio(1);
     }
 }

@@ -4,6 +4,7 @@ namespace LaravelEnso\Charts\Factories;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
+use LaravelEnso\Charts\Enums\Type;
 
 abstract class Chart
 {
@@ -15,7 +16,7 @@ abstract class Chart
     protected array $labels;
     protected array $colors;
     protected string $title;
-    protected string $type;
+    protected Type $type;
     protected array $datalabels;
     private bool $gridlines;
     private bool $autoYMin;
@@ -146,7 +147,7 @@ abstract class Chart
 
     abstract protected function response(): array;
 
-    protected function type(string $type): self
+    protected function type(Type $type): self
     {
         $this->type = $type;
 

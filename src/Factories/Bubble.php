@@ -3,7 +3,7 @@
 namespace LaravelEnso\Charts\Factories;
 
 use Illuminate\Support\Collection;
-use LaravelEnso\Charts\Enums\Charts;
+use LaravelEnso\Charts\Enums\Type;
 use LaravelEnso\Helpers\Services\Decimals;
 use LaravelEnso\Helpers\Traits\When;
 
@@ -22,7 +22,7 @@ class Bubble extends Chart
         $this->autoRadius = true;
         $this->radiusLimit = 25;
 
-        $this->type(Charts::Bubble)
+        $this->type(Type::Bubble)
             ->ratio(1.6);
     }
 
@@ -32,7 +32,7 @@ class Bubble extends Chart
             'data' => ['datasets' => $this->data],
             'options' => $this->options,
             'title' => $this->title,
-            'type' => $this->type,
+            'type' => $this->type->value,
         ];
     }
 

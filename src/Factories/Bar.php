@@ -3,6 +3,7 @@
 namespace LaravelEnso\Charts\Factories;
 
 use Illuminate\Support\Collection;
+use LaravelEnso\Charts\Enums\Type;
 
 class Bar extends Chart
 {
@@ -10,7 +11,7 @@ class Bar extends Chart
     {
         parent::__construct();
 
-        $this->type('bar')
+        $this->type(Type::Bar)
             ->ratio(1.6);
     }
 
@@ -38,7 +39,7 @@ class Bar extends Chart
             ],
             'options' => $this->options,
             'title' => $this->title,
-            'type' => $this->type,
+            'type' => $this->type->value,
         ];
     }
 

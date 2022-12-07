@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\Charts\Factories;
 
-use LaravelEnso\Charts\Enums\Charts;
+use LaravelEnso\Charts\Enums\Type;
 
 class Doughnut extends Circles
 {
@@ -10,7 +10,7 @@ class Doughnut extends Circles
     {
         parent::__construct();
 
-        $this->type(Charts::Doughnut)
+        $this->type(Type::Doughnut)
             ->ratio(1);
     }
 }

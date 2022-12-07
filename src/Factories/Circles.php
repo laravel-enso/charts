@@ -15,7 +15,7 @@ abstract class Circles extends Chart
             ],
             'options' => $this->options,
             'title' => $this->title,
-            'type' => $this->type,
+            'type' => $this->type->value,
         ];
     }
 
