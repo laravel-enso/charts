@@ -10,12 +10,12 @@ abstract class Circles extends Chart
     {
         return [
             'data' => [
-                'labels' => $this->labels,
+                'labels'   => $this->labels,
                 'datasets' => $this->data,
             ],
             'options' => $this->options,
-            'title' => $this->title,
-            'type' => $this->type->value,
+            'title'   => $this->title,
+            'type'    => $this->type->value,
         ];
     }
 
@@ -27,9 +27,9 @@ abstract class Circles extends Chart
         $this->data = is_array($this->datasets[0])
             ? $this->stackedDatasets($colors)
             : [[
-                'data' => $this->datasets,
+                'data'            => $this->datasets,
                 'backgroundColor' => $colors,
-                'datalabels' => ['backgroundColor' => $colors],
+                'datalabels'      => ['backgroundColor' => $colors],
             ]];
     }
 

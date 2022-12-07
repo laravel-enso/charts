@@ -205,7 +205,7 @@ abstract class Chart
     {
         return  [
             'ticks' => [
-                'autoSkip' => false,
+                'autoSkip'    => false,
                 'maxRotation' => 90,
             ],
             'grid' => ['drawOnChartArea' => $this->gridlines],
@@ -216,7 +216,7 @@ abstract class Chart
     {
         $config = ['grid' => ['drawOnChartArea' => $this->gridlines]];
 
-        if (! $this->autoYMin) {
+        if (!$this->autoYMin) {
             $config['ticks']['min'] = 0;
         }
 

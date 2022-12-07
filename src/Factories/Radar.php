@@ -19,12 +19,12 @@ class Radar extends Chart
     {
         return [
             'data' => [
-                'labels' => $this->labels,
+                'labels'   => $this->labels,
                 'datasets' => $this->data,
             ],
             'options' => $this->options,
-            'title' => $this->title,
-            'type' => $this->type->value,
+            'title'   => $this->title,
+            'type'    => $this->type->value,
         ];
     }
 

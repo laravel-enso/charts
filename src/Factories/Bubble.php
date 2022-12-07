@@ -29,10 +29,10 @@ class Bubble extends Chart
     public function response(): array
     {
         return [
-            'data' => ['datasets' => $this->data],
+            'data'    => ['datasets' => $this->data],
             'options' => $this->options,
-            'title' => $this->title,
-            'type' => $this->type->value,
+            'title'   => $this->title,
+            'type'    => $this->type->value,
         ];
     }
 
