@@ -3,13 +3,13 @@
 namespace LaravelEnso\Charts\Factories;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Traits\Conditionable;
 use LaravelEnso\Charts\Enums\Charts;
 use LaravelEnso\Helpers\Services\Decimals;
-use LaravelEnso\Helpers\Traits\When;
 
 class Bubble extends Chart
 {
-    use When;
+    use Conditionable;
 
     private bool $autoRadius;
     private int $radiusLimit;
