@@ -3,7 +3,7 @@
 namespace LaravelEnso\Charts\Factories;
 
 use Illuminate\Support\Collection;
-use LaravelEnso\Charts\Enums\Charts;
+use LaravelEnso\Charts\Enums\Chart as ChartEnum;
 
 class Radar extends Chart
 {
@@ -11,7 +11,7 @@ class Radar extends Chart
     {
         parent::__construct();
 
-        $this->type(Charts::Radar)
+        $this->type(ChartEnum::Radar->value)
             ->ratio(1);
     }
 

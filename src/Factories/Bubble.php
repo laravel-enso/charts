@@ -4,7 +4,7 @@ namespace LaravelEnso\Charts\Factories;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Conditionable;
-use LaravelEnso\Charts\Enums\Charts;
+use LaravelEnso\Charts\Enums\Chart as ChartEnum;
 use LaravelEnso\Helpers\Services\Decimals;
 
 class Bubble extends Chart
@@ -22,7 +22,7 @@ class Bubble extends Chart
         $this->autoRadius = true;
         $this->radiusLimit = 25;
 
-        $this->type(Charts::Bubble)
+        $this->type(ChartEnum::Bubble->value)
             ->ratio(1.6);
     }
 
