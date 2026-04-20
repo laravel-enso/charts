@@ -204,10 +204,6 @@ Companion frontend package:
 
 - [`@enso-ui/charts`](https://docs.laravel-enso.com/frontend/charts.html) [↗](https://github.com/enso-ui/charts)
 
-Framework dependency:
-
-- Laravel framework support classes and configuration services
-
 ## Contributions
 
 are welcome. Pull requests are great, but issues are good too.
