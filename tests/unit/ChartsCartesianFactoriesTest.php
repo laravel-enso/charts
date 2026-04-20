@@ -17,7 +17,7 @@ class ChartsCartesianFactoriesTest extends ChartsTestCase
             ->title('Quarterly revenue')
             ->labels(['Q1', 'Q2'])
             ->datasets([
-                'Revenue' => [12000, 18000],
+                'Revenue'  => [12000, 18000],
                 'Forecast' => [10000, 16000],
             ])
             ->horizontal()

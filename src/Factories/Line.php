@@ -23,12 +23,12 @@ class Line extends Chart
     {
         return [
             'data' => [
-                'labels' => $this->labels,
+                'labels'   => $this->labels,
                 'datasets' => $this->data,
             ],
             'options' => $this->options,
-            'title' => $this->title,
-            'type' => $this->type,
+            'title'   => $this->title,
+            'type'    => $this->type,
         ];
     }
 
@@ -43,15 +43,15 @@ class Line extends Chart
     {
         Collection::wrap($this->datasets)
             ->each(fn ($dataset, $label) => $this->data[] = [
-                'fill' => $this->fill,
-                'lineTension' => 0.3,
+                'fill'             => $this->fill,
+                'lineTension'      => 0.3,
                 'pointHoverRadius' => 5,
-                'pointHitRadius' => 5,
-                'label' => $label,
-                'borderColor' => $this->color(),
-                'backgroundColor' => $this->hex2rgba($this->color()),
-                'data' => $dataset,
-                'datalabels' => empty($this->datalabels) ? [
+                'pointHitRadius'   => 5,
+                'label'            => $label,
+                'borderColor'      => $this->color(),
+                'backgroundColor'  => $this->hex2rgba($this->color()),
+                'data'             => $dataset,
+                'datalabels'       => empty($this->datalabels) ? [
                     'backgroundColor' => $this->color(),
                 ] : $this->datalabels,
             ]);

@@ -33,12 +33,12 @@ class Bar extends Chart
     {
         return [
             'data' => [
-                'labels' => $this->labels,
+                'labels'   => $this->labels,
                 'datasets' => $this->data,
             ],
             'options' => $this->options,
-            'title' => $this->title,
-            'type' => $this->type,
+            'title'   => $this->title,
+            'type'    => $this->type,
         ];
     }
 
@@ -46,10 +46,10 @@ class Bar extends Chart
     {
         Collection::wrap($this->datasets)
             ->each(fn ($dataset, $label) => $this->data[] = [
-                'label' => $label,
+                'label'           => $label,
                 'backgroundColor' => $this->color(),
-                'data' => $dataset,
-                'datalabels' => empty($this->datalabels) ? [
+                'data'            => $dataset,
+                'datalabels'      => empty($this->datalabels) ? [
                     'backgroundColor' => $this->color(),
                 ] : $this->datalabels,
             ]);

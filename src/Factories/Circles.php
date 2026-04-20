@@ -10,12 +10,12 @@ abstract class Circles extends Chart
     {
         return [
             'data' => [
-                'labels' => $this->labels,
+                'labels'   => $this->labels,
                 'datasets' => $this->data,
             ],
             'options' => $this->options,
-            'title' => $this->title,
-            'type' => $this->type,
+            'title'   => $this->title,
+            'type'    => $this->type,
         ];
     }
 
@@ -27,9 +27,9 @@ abstract class Circles extends Chart
         $this->data = is_array($this->datasets[0])
             ? $this->stackedDatasets($colors)->toArray()
             : [[
-                'data' => $this->datasets,
+                'data'            => $this->datasets,
                 'backgroundColor' => $colors,
-                'datalabels' => ['backgroundColor' => $colors],
+                'datalabels'      => ['backgroundColor' => $colors],
             ]];
     }
 
@@ -37,9 +37,9 @@ abstract class Circles extends Chart
     {
         return Collection::wrap($this->datasets)
             ->map(fn ($dataset) => [
-                'data' => $dataset,
+                'data'            => $dataset,
                 'backgroundColor' => $colors,
-                'datalabels' => empty($this->datalabels) ? [
+                'datalabels'      => empty($this->datalabels) ? [
                     'backgroundColor' => $colors,
                 ] : $this->datalabels,
             ]);

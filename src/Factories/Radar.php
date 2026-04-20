@@ -19,12 +19,12 @@ class Radar extends Chart
     {
         return [
             'data' => [
-                'labels' => $this->labels,
+                'labels'   => $this->labels,
                 'datasets' => $this->data,
             ],
             'options' => $this->options,
-            'title' => $this->title,
-            'type' => $this->type,
+            'title'   => $this->title,
+            'type'    => $this->type,
         ];
     }
 
@@ -32,12 +32,12 @@ class Radar extends Chart
     {
         Collection::wrap($this->datasets)
             ->each(fn ($dataset, $label) => $this->data[] = [
-                'label' => $label,
-                'borderColor' => $this->color(),
-                'backgroundColor' => $this->hex2rgba($this->color()),
+                'label'            => $label,
+                'borderColor'      => $this->color(),
+                'backgroundColor'  => $this->hex2rgba($this->color()),
                 'pointBorderColor' => '#fff',
-                'data' => $dataset,
-                'datalabels' => empty($this->datalabels) ? [
+                'data'             => $dataset,
+                'datalabels'       => empty($this->datalabels) ? [
                     'backgroundColor' => $this->color(),
                 ] : $this->datalabels,
             ]);

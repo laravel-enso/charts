@@ -29,10 +29,10 @@ class Bubble extends Chart
     public function response(): array
     {
         return [
-            'data' => ['datasets' => $this->data],
+            'data'    => ['datasets' => $this->data],
             'options' => $this->options,
-            'title' => $this->title,
-            'type' => $this->type,
+            'title'   => $this->title,
+            'type'    => $this->type,
         ];
     }
 
@@ -94,12 +94,12 @@ class Bubble extends Chart
     {
         Collection::wrap($this->datasets)
             ->each(fn ($dataset, $label) => $this->data[] = [
-                'label' => $label,
-                'borderColor' => $this->color(),
-                'backgroundColor' => $this->hex2rgba($this->color()),
+                'label'                => $label,
+                'borderColor'          => $this->color(),
+                'backgroundColor'      => $this->hex2rgba($this->color()),
                 'hoverBackgroundColor' => $this->hex2rgba($this->color(), 0.6),
-                'data' => $this->dataset($dataset),
-                'datalabels' => empty($this->datalabels) ? [
+                'data'                 => $this->dataset($dataset),
+                'datalabels'           => empty($this->datalabels) ? [
                     'backgroundColor' => $this->color(),
                 ] : $this->datalabels,
             ]);
