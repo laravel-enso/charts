@@ -3,7 +3,7 @@
 namespace LaravelEnso\Charts\Factories;
 
 use Illuminate\Support\Collection;
-use LaravelEnso\Charts\Enums\Charts;
+use LaravelEnso\Charts\Enums\Chart as ChartEnum;
 
 class Line extends Chart
 {
@@ -15,7 +15,7 @@ class Line extends Chart
 
         $this->fill = false;
 
-        $this->type(Charts::Line)
+        $this->type(ChartEnum::Line->value)
             ->ratio(1.6);
     }
 
