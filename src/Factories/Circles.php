@@ -25,7 +25,7 @@ abstract class Circles extends Chart
             ->slice(0, count($this->labels));
 
         $this->data = is_array($this->datasets[0])
-            ? $this->stackedDatasets($colors)
+            ? $this->stackedDatasets($colors)->toArray()
             : [[
                 'data' => $this->datasets,
                 'backgroundColor' => $colors,

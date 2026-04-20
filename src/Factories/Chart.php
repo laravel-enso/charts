@@ -26,6 +26,7 @@ abstract class Chart
         $this->data = [];
         $this->datasetConfig = [];
         $this->options = Config::get('enso.charts.options');
+        $this->title = '';
         $this->labels = [];
         $this->datalabels = [];
         $this->gridlines = false;
@@ -153,7 +154,7 @@ abstract class Chart
         return $this;
     }
 
-    protected function hex2rgba(string $color): string
+    protected function hex2rgba(string $color, ?float $opacity = null): string
     {
         $color = substr($color, 1);
 
@@ -165,7 +166,7 @@ abstract class Chart
 
         $rgb = array_map('hexdec', $hex);
         $rgba = implode(',', $rgb);
-        $opacity = Config::get('enso.charts.fillBackgroundOpacity');
+        $opacity ??= Config::get('enso.charts.fillBackgroundOpacity');
 
         return "rgba({$rgba},{$opacity})";
     }
